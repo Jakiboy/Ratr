@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ratr", "Ratr.csproj", "{465074A7-8CA0-43EC-AA6A-49BE02953B52}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Description = ZTE Router Config Extractor
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{465074A7-8CA0-43EC-AA6A-49BE02953B52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465074A7-8CA0-43EC-AA6A-49BE02953B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465074A7-8CA0-43EC-AA6A-49BE02953B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465074A7-8CA0-43EC-AA6A-49BE02953B52}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29578489-9A0F-46C4-84A4-0D8500D59719}
+	EndGlobalSection
+EndGlobal
