@@ -21,7 +21,7 @@ Used to build Ratr:
 ## Teseted:
 
 * **ZTE ZXHN H267N** ^1.x.
-* **Huawei DG8245V-10** ^1.x. (V100R...)
+* **Huawei DG8245V-10** ^1.x.
 
 ## Decoder:
 
