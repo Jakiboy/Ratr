@@ -36,7 +36,7 @@ Used to build Ratr:
 
 ## Screenshot
 
-<img src="./.assets/screenshot.png" width="100%" alt="Ratr">
+![Ratr](./.assets/screenshot.png)
 
 ---
 
