@@ -32,6 +32,7 @@ Used to build Ratr:
 **Windows only** (No setup)
 
 * Download from: [Releases](https://github.com/Jakiboy/Ratr/releases).
+* [example.config.bin](./.assets/example.config.bin).
 
 ## Screenshot
 
