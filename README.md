@@ -1,6 +1,6 @@
 # Ratr
 
-<img src="./.assets/icon.svg" width="100px" alt="Ratr">
+[![Ratr](./.assets/icon.svg)](#)
 
 ZTE Router Config Extractor (GUI).  
 
@@ -36,7 +36,7 @@ Used to build Ratr:
 
 ## Screenshot
 
-![Ratr](./.assets/screenshot.png)
+[![screenshot](./.assets/screenshot.png)](#)
 
 ---
 
