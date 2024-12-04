@@ -10,4 +10,4 @@ Open your ZTE router Admin interface (e.g. at [192.168.1.1](http://192.168.1.1))
 
 ## Screenshot
 
-<img src="./.assets/how.png" width="100%" alt="Ratr">
+![Ratr](./.assets/how.png)
