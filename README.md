@@ -2,7 +2,7 @@
 
 [![Ratr](./.assets/icon.svg)](#)
 
-ZTE Router Config Extractor (GUI).  
+Router Config Extractor (GUI).  
 
 * Extract **PPP** hidden password to be used in personal router.
 * Security: Avoiding default router from your ISP & Possible malwares in custom firmwares.
