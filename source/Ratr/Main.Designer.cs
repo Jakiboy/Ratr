@@ -111,11 +111,11 @@
             // 
             about.AutoSize = true;
             about.Enabled = false;
-            about.Location = new Point(56, 248);
+            about.Location = new Point(56, 249);
             about.Name = "about";
-            about.Size = new Size(211, 15);
-            about.TabIndex = 9;
-            about.Text = "| For educational purposes only | v0.1.0";
+            about.Size = new Size(43, 15);
+            about.TabIndex = 8;
+            about.Text = "| v0.1.0";
             // 
             // how
             // 
