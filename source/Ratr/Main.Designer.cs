@@ -147,7 +147,7 @@
             MaximizeBox = false;
             MdiChildrenMinimizedAnchorBottom = false;
             Name = "Main";
-            Text = "Ratr [ZTE Router Config Extractor]";
+            Text = "Ratr [Router Config Extractor]";
             TopMost = true;
             FormClosed += FormClose;
             Load += FormLoad;
