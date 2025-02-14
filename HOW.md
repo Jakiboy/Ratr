@@ -10,4 +10,4 @@ Open your router (ZTE) Admin interface (e.g. at [192.168.1.1](http://192.168.1.1
 
 ## Screenshot
 
-[![how](./.assets/how.png)](#)
+[![how](./.static/how.png)](#)
