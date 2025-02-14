@@ -115,7 +115,7 @@
             about.Name = "about";
             about.Size = new Size(43, 15);
             about.TabIndex = 8;
-            about.Text = "| v0.1.0";
+            about.Text = "| v0.1.1";
             // 
             // how
             // 
