@@ -20,73 +20,143 @@ namespace Ratr
 
         private void UploadClick(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Binary files (*.bin)|*.bin";
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                this.upload.Enabled = false;
-                this.upload.Text = "Decoding...";
+                Filter = "Binary files (*.bin)|*.bin"
+            };
 
-                // Upload
-                string filePath = openFileDialog1.FileName;
-                string fileName = guid + Path.GetFileName(filePath);
-                string binFile = Path.Combine(tempFolder, fileName);
-                File.Copy(filePath, binFile);
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Disable upload button and update text
+                    this.upload.Enabled = false;
+                    this.upload.Text = "Decoding...";
 
-                // Decode init
-                string decoder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ".\\decode.exe");
-                string xmlFile = Path.Combine(tempFolder, guid + "config.xml");
-                decoder = Path.GetFullPath(decoder);
-                string args = $"/c {decoder} {binFile} {xmlFile} --try-all-known-keys";
+                    // Upload
+                    string filePath = openFileDialog.FileName;
+                    string fileName = guid + Path.GetFileName(filePath);
+                    string binFile = Path.Combine(tempFolder, fileName);
 
-                // Decode process
-                Process process = new Process();
-                process.StartInfo.FileName = "cmd.exe";
-                process.StartInfo.Arguments = args;
-                process.StartInfo.UseShellExecute = false;
-                process.StartInfo.RedirectStandardOutput = true;
-                process.StartInfo.CreateNoWindow = true;
-                process.Start();
-                process.WaitForExit();
+                    // Ensure the temp folder exists
+                    if (!Directory.Exists(tempFolder))
+                    {
+                        Directory.CreateDirectory(tempFolder);
+                    }
 
-                // Parse
-                ParseXML(xmlFile);
+                    // Copy the file to the temp folder
+                    File.Copy(filePath, binFile, overwrite: true); // Overwrite if file already exists
+
+                    // Decode init
+                    string decoder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "decode.exe");
+                    string xmlFile = Path.Combine(tempFolder, guid + "config.xml");
+                    decoder = Path.GetFullPath(decoder);
+
+                    // Check if the decoder executable exists
+                    if (!File.Exists(decoder))
+                    {
+                        MessageBox.Show("Decoder is missing. Please ensure 'decode.exe' is placed in the root folder.", "Decoder Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    string args = $"/c {decoder} {binFile} {xmlFile} --try-all-known-keys";
+
+                    // Decode process
+                    Process process = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = args,
+                            UseShellExecute = false,
+                            RedirectStandardOutput = true,
+                            CreateNoWindow = true
+                        }
+                    };
+
+                    process.Start();
+                    process.WaitForExit();
+
+                    // Check if the decoding process succeeded
+                    if (process.ExitCode != 0)
+                    {
+                        MessageBox.Show("Failed to decode the .bin file. Please ensure the file is valid and try again.", "Decoding Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Parse the decoded XML file
+                    ParseXML(xmlFile);
+                }
+                catch (Exception ex)
+                {
+                    // Handle any unexpected errors
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    // Re-enable the upload button and reset its text
+                    this.upload.Enabled = true;
+                    this.upload.Text = "Upload .bin";
+                }
             }
-
-            this.upload.Enabled = true;
-            this.upload.Text = "Upload .bin";
         }
 
         private void ParseXML(string xmlFile)
         {
-            // Get file
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(xmlFile);
+            try
+            {
+                // Get file
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(xmlFile);
 
-            // Get nodes
-            XmlNode dbNode = xmlDoc.SelectSingleNode("//DB");
-            XmlNode tblNode = dbNode.SelectSingleNode("//Tbl[@name='PPPIF']");
-            XmlNode uNode = tblNode.SelectSingleNode(".//DM[@name='Username']");
-            XmlNode pNode = tblNode.SelectSingleNode(".//DM[@name='Password']");
+                // Get nodes
+                XmlNode dbNode = xmlDoc.SelectSingleNode("//DB");
+                if (dbNode == null)
+                {
+                    MessageBox.Show("The XML file does not contain a valid 'DB' node.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            // Set data
-            if (uNode != null)
-            {
-                this.username.Text = uNode.Attributes["val"].Value;
-            }
-            else
-            {
-                this.username.Text = "Error!";
-            }
+                XmlNode tblNode = dbNode.SelectSingleNode("//Tbl[@name='PPPIF']");
+                if (tblNode == null)
+                {
+                    MessageBox.Show("The 'PPPIF' table was not found in the XML file.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            if (pNode != null)
-            {
-                this.password.Text = pNode.Attributes["val"].Value;
+                XmlNode uNode = tblNode.SelectSingleNode(".//DM[@name='Username']");
+                XmlNode pNode = tblNode.SelectSingleNode(".//DM[@name='Password']");
+
+                // Set data
+                if (uNode != null)
+                {
+                    this.username.Text = uNode.Attributes["val"].Value;
+                }
+                else
+                {
+                    this.username.Text = "Error!";
+                }
+
+                if (pNode != null)
+                {
+                    this.password.Text = pNode.Attributes["val"].Value;
+                }
+                else
+                {
+                    this.password.Text = "Error!";
+                }
             }
-            else
+            catch (System.IO.FileNotFoundException)
             {
-                this.password.Text = "Error!";
+                MessageBox.Show("The specified XML file was not found. Please check the file path and try again.", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Xml.XmlException)
+            {
+                MessageBox.Show("The XML file is not valid or is corrupted. Please check the file and try again.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
