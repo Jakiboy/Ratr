@@ -1,6 +1,6 @@
 # Ratr
 
-[![Ratr](./.assets/icon.svg)](#)
+[![Ratr](./.static/icon.svg)](#)
 
 Router Config Extractor (GUI).  
 
@@ -12,38 +12,34 @@ Router Config Extractor (GUI).
 
 ## Requirements:
 
-* [**.NET Desktop Runtime**](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.23-windows-x64-installer) ^6.x.
+* [**.NET Desktop Runtime**](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.23-windows-x64-installer) ^6.x
 
 Used to build Ratr:
 
-* **Visual Studio 2022** ^17.x.
+* **Visual Studio 2022** ^17.x
 
 ## Teseted:
 
-* **ZTE ZXHN H267N** ^1.x.
-* **Huawei DG8245V-10** ^1.x.
+* **ZTE ZXHN H267N** ^1.x
+* **Huawei DG8245V-10** ^1.x
 
 ## Decoder:
 
-* Python script [ZTE config utility](https://github.com/mkst/zte-config-utility), Using AES encryption [pycryptodomex](https://pypi.org/project/pycryptodomex/).
+* [ZTE config utility](https://github.com/mkst/zte-config-utility)
+* [AES encryption](https://pypi.org/project/pycryptodomex/)
+
+> [!CAUTION]
+> The file '[**decode.exe**](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/bin/decode.exe)' has been flagged as a potential threat by your antivirus software. This is a false positive, and the file is safe to use.
 
 ## Download
 
 **Windows only** (No setup)
 
 * Download from: [Releases](https://github.com/Jakiboy/Ratr/releases).
-* [example.config.bin](./.assets/example.config.bin).
+* [example.config.bin](./.static/example.config.bin).
 
 ## Screenshot
 
-[![screenshot](./.assets/screenshot.png)](#)
+[![screenshot](./.static/screenshot.png)](#)
 
 ---
-
-## Authors:
-
-* **Jihad Sinnaour** - [Jakiboy](https://github.com/Jakiboy) (*Initial work*)
-
-## ⭐ Support:
-
-Please give it a Star if you like the project.
