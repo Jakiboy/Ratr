@@ -28,9 +28,6 @@ Used to build Ratr:
 * [ZTE config utility](https://github.com/mkst/zte-config-utility)
 * [AES encryption](https://pypi.org/project/pycryptodomex/)
 
-> [!CAUTION]
-> The file '[**decode.exe**](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/bin/decode.exe)' has been flagged as a potential threat by your antivirus software. This is a false positive, and the file is safe to use.
-
 ## Download
 
 **Windows only** (No setup)
@@ -43,3 +40,6 @@ Used to build Ratr:
 [![screenshot](./.static/screenshot.png)](#)
 
 ---
+
+> [!CAUTION]
+> The file '[**decode.exe**](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/bin/decode.exe)' has been flagged as a potential threat by your antivirus software. This is a false positive, and the file is safe to use.
