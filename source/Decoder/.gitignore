@@ -1,0 +1,6 @@
+zte/
+dist/
+build/
+Release/
+decode.spec
+*.exe
