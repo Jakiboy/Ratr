@@ -31,119 +31,148 @@
             upload = new Button();
             username = new TextBox();
             password = new TextBox();
-            label1 = new Label();
-            label2 = new Label();
+            userlabel = new Label();
+            pswdlabel = new Label();
             icon = new PictureBox();
-            author = new LinkLabel();
-            about = new Label();
-            how = new LinkLabel();
+            model = new ComboBox();
+            menu = new MenuStrip();
+            aboutToolStripMenuItem = new ToolStripMenuItem();
+            howToExportRouterDataToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            noticeToolStripMenuItem = new ToolStripMenuItem();
+            resultGroup = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)icon).BeginInit();
+            menu.SuspendLayout();
+            resultGroup.SuspendLayout();
             SuspendLayout();
             // 
             // upload
             // 
-            upload.Location = new Point(111, 122);
+            upload.Enabled = false;
+            upload.Location = new Point(67, 153);
             upload.Name = "upload";
-            upload.Size = new Size(108, 23);
+            upload.Size = new Size(189, 23);
             upload.TabIndex = 0;
-            upload.Text = "Upload .bin";
+            upload.Text = "Choose file";
             upload.UseVisualStyleBackColor = true;
             upload.Click += UploadClick;
             // 
             // username
             // 
-            username.Location = new Point(12, 171);
+            username.Location = new Point(17, 49);
             username.Name = "username";
             username.ReadOnly = true;
-            username.Size = new Size(307, 23);
+            username.Size = new Size(276, 23);
             username.TabIndex = 1;
             // 
             // password
             // 
-            password.Location = new Point(12, 219);
+            password.Location = new Point(17, 97);
             password.Name = "password";
             password.ReadOnly = true;
-            password.Size = new Size(307, 23);
+            password.Size = new Size(276, 23);
             password.TabIndex = 2;
             // 
-            // label1
+            // userlabel
             // 
-            label1.AutoSize = true;
-            label1.ImageAlign = ContentAlignment.MiddleLeft;
-            label1.Location = new Point(12, 150);
-            label1.Name = "label1";
-            label1.Size = new Size(60, 15);
-            label1.TabIndex = 3;
-            label1.Text = "Username";
+            userlabel.AutoSize = true;
+            userlabel.ImageAlign = ContentAlignment.MiddleLeft;
+            userlabel.Location = new Point(17, 28);
+            userlabel.Name = "userlabel";
+            userlabel.Size = new Size(60, 15);
+            userlabel.TabIndex = 3;
+            userlabel.Text = "Username";
             // 
-            // label2
+            // pswdlabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 201);
-            label2.Name = "label2";
-            label2.Size = new Size(57, 15);
-            label2.TabIndex = 4;
-            label2.Text = "Password";
+            pswdlabel.AutoSize = true;
+            pswdlabel.Location = new Point(17, 79);
+            pswdlabel.Name = "pswdlabel";
+            pswdlabel.Size = new Size(57, 15);
+            pswdlabel.TabIndex = 4;
+            pswdlabel.Text = "Password";
             // 
             // icon
             // 
             icon.Image = Properties.Resources.router;
-            icon.Location = new Point(111, 10);
+            icon.Location = new Point(111, 27);
             icon.Name = "icon";
-            icon.Size = new Size(108, 106);
+            icon.Size = new Size(98, 91);
+            icon.SizeMode = PictureBoxSizeMode.CenterImage;
             icon.TabIndex = 8;
             icon.TabStop = false;
             // 
-            // author
+            // model
             // 
-            author.AutoSize = true;
-            author.LinkBehavior = LinkBehavior.AlwaysUnderline;
-            author.LinkColor = Color.MediumSlateBlue;
-            author.Location = new Point(12, 248);
-            author.Name = "author";
-            author.Size = new Size(46, 15);
-            author.TabIndex = 7;
-            author.TabStop = true;
-            author.Text = "Jakiboy";
-            author.LinkClicked += AuthorClicked;
+            model.DropDownStyle = ComboBoxStyle.DropDownList;
+            model.Items.AddRange(new object[] { "Select Model", "ZTE (ZXHN H267N)", "Huawei (DG8245V-10)" });
+            model.Location = new Point(67, 124);
+            model.Name = "model";
+            model.Size = new Size(189, 23);
+            model.TabIndex = 11;
+            model.SelectedIndexChanged += model_SelectedIndexChanged;
             // 
-            // about
+            // menu
             // 
-            about.AutoSize = true;
-            about.Enabled = false;
-            about.Location = new Point(56, 249);
-            about.Name = "about";
-            about.Size = new Size(43, 15);
-            about.TabIndex = 8;
-            about.Text = "| v0.1.1";
+            menu.Items.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
+            menu.Location = new Point(0, 0);
+            menu.Name = "menu";
+            menu.Size = new Size(334, 24);
+            menu.TabIndex = 12;
+            menu.Text = "menuStrip1";
             // 
-            // how
+            // aboutToolStripMenuItem
             // 
-            how.AutoSize = true;
-            how.LinkColor = Color.MediumSlateBlue;
-            how.Location = new Point(228, 127);
-            how.Name = "how";
-            how.Size = new Size(37, 15);
-            how.TabIndex = 10;
-            how.TabStop = true;
-            how.Text = "How?";
-            how.LinkClicked += HowClicked;
+            aboutToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { howToExportRouterDataToolStripMenuItem, toolStripSeparator1, noticeToolStripMenuItem });
+            aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            aboutToolStripMenuItem.Size = new Size(54, 20);
+            aboutToolStripMenuItem.Text = "Notice";
+            aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
+            // 
+            // howToExportRouterDataToolStripMenuItem
+            // 
+            howToExportRouterDataToolStripMenuItem.Name = "howToExportRouterDataToolStripMenuItem";
+            howToExportRouterDataToolStripMenuItem.Size = new Size(219, 22);
+            howToExportRouterDataToolStripMenuItem.Text = "How to export router data ?";
+            howToExportRouterDataToolStripMenuItem.Click += howToExportRouterDataToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(216, 6);
+            // 
+            // noticeToolStripMenuItem
+            // 
+            noticeToolStripMenuItem.Name = "noticeToolStripMenuItem";
+            noticeToolStripMenuItem.Size = new Size(219, 22);
+            noticeToolStripMenuItem.Text = "About";
+            noticeToolStripMenuItem.Click += noticeToolStripMenuItem_Click;
+            // 
+            // resultGroup
+            // 
+            resultGroup.Controls.Add(username);
+            resultGroup.Controls.Add(password);
+            resultGroup.Controls.Add(userlabel);
+            resultGroup.Controls.Add(pswdlabel);
+            resultGroup.Location = new Point(12, 211);
+            resultGroup.Name = "resultGroup";
+            resultGroup.Size = new Size(310, 136);
+            resultGroup.TabIndex = 13;
+            resultGroup.TabStop = false;
+            resultGroup.Text = "Result (PPP decoded data)";
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(334, 272);
+            ClientSize = new Size(334, 359);
+            Controls.Add(resultGroup);
+            Controls.Add(model);
             Controls.Add(icon);
-            Controls.Add(how);
-            Controls.Add(about);
-            Controls.Add(author);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(password);
-            Controls.Add(username);
             Controls.Add(upload);
+            Controls.Add(menu);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            MainMenuStrip = menu;
             MaximizeBox = false;
             MdiChildrenMinimizedAnchorBottom = false;
             Name = "Main";
@@ -152,6 +181,10 @@
             FormClosed += FormClose;
             Load += FormLoad;
             ((System.ComponentModel.ISupportInitialize)icon).EndInit();
+            menu.ResumeLayout(false);
+            menu.PerformLayout();
+            resultGroup.ResumeLayout(false);
+            resultGroup.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -161,11 +194,15 @@
         private Button upload;
         private TextBox username;
         private TextBox password;
-        private Label label1;
-        private Label label2;
+        private Label userlabel;
+        private Label pswdlabel;
         private PictureBox icon;
-        private LinkLabel author;
-        private Label about;
-        private LinkLabel how;
+        private ComboBox model;
+        private MenuStrip menu;
+        private ToolStripMenuItem aboutToolStripMenuItem;
+        private ToolStripMenuItem howToExportRouterDataToolStripMenuItem;
+        private ToolStripMenuItem noticeToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private GroupBox resultGroup;
     }
 }

@@ -1,13 +1,6 @@
-# HOW?
+# How to export router data ?
 
-Open your router (ZTE) Admin interface (e.g. at [192.168.1.1](http://192.168.1.1)).  
+Select from available router models:  
 
-* Enter Username & Password.
-* Login.
-* Management & Diagnosis **>** System Management **>** User Configuration Management **>** **Backup Configuration**.
-* Save the file **config.bin**.
-* Open **Ratr.exe** & load the saved **config.bin**.
-
-## Screenshot
-
-[![how](./.static/how.png)](#)
+* [ZTE ZXHN H267N ^1.x](./docs/zte.md)
+* [Huawei DG8245V-10 ^1.x](./docs/huawei.md)
