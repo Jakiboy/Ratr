@@ -76,10 +76,14 @@ namespace Ratr
                         return;
                     }
 
-                    string args = $"/c {decoder} {configFile} {xmlFile} --try-all-known-keys";
-                    if (this.modelName == "huawei-dg8245v-10")
+                    string args = "";
+                    if (this.modelName == "zte-zxhn-h267n")
                     {
-                        args = $"/c {decoder} XXXX";
+                        args = $"/c {decoder} {configFile} {xmlFile} --try-all-known-keys";
+                    }
+                    else if (this.modelName == "huawei-dg8245v-10")
+                    {
+                        args = $"/c {decoder} --file {configFile} --output {xmlFile}";
                     }
 
                     // Decode process
@@ -105,8 +109,16 @@ namespace Ratr
                         return;
                     }
 
-                    // Parse ZTE decoded XML file
-                    ParseZteXML(xmlFile);
+                    // Parse decoded XML file
+                    if (this.modelName == "zte-zxhn-h267n")
+                    {
+                        ParseZteXML(xmlFile);
+                    }
+                    else if (this.modelName == "huawei-dg8245v-10")
+                    {
+                        ParseHuaweiXML(xmlFile);
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -151,7 +163,8 @@ namespace Ratr
                 // Set data
                 if (uNode != null)
                 {
-                    this.username.Text = uNode.Attributes["val"].Value;
+                    this.username.Text = uNode.Attributes?["val"]?.Value ?? "Undefined";
+                    this.username.Enabled = true;
                 }
                 else
                 {
@@ -160,7 +173,71 @@ namespace Ratr
 
                 if (pNode != null)
                 {
-                    this.password.Text = pNode.Attributes["val"].Value;
+                    this.password.Text = pNode.Attributes?["val"]?.Value ?? "Undefined";
+                    this.password.Enabled = true;
+                }
+                else
+                {
+                    this.password.Text = "Error!";
+                }
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                MessageBox.Show("The specified XML file was not found. Please check the file path and try again.", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Xml.XmlException)
+            {
+                MessageBox.Show("The XML file is not valid or is corrupted. Please check the file and try again.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ParseHuaweiXML(string xmlFile)
+        {
+            try
+            {
+                // Load the XML document
+                XmlDocument xmlDoc = new();
+                xmlDoc.Load(xmlFile);
+
+                // Navigate to the first <LineInstance> node
+                XmlNode? lineInstanceNode = xmlDoc.SelectSingleNode("//LineInstance");
+                if (lineInstanceNode == null)
+                {
+                    MessageBox.Show("The XML file does not contain a valid 'LineInstance' node.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Navigate to the <SIP> node within the <LineInstance>
+                XmlNode? sipNode = lineInstanceNode.SelectSingleNode(".//SIP");
+                if (sipNode == null)
+                {
+                    MessageBox.Show("The 'SIP' node was not found in the XML file.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Extract AuthUserName and AuthPassword
+                XmlNode? authUserNameNode = sipNode.SelectSingleNode(".//@AuthUserName");
+                XmlNode? authPasswordNode = sipNode.SelectSingleNode(".//@AuthPassword");
+
+                // Set data
+                if (authUserNameNode != null)
+                {
+                    this.username.Text = authUserNameNode.Value;
+                    this.username.Enabled = true;
+                }
+                else
+                {
+                    this.username.Text = "Error!";
+                }
+
+                if (authPasswordNode != null)
+                {
+                    this.password.Text = authPasswordNode.Value;
+                    this.password.Enabled = true;
                 }
                 else
                 {
@@ -211,15 +288,10 @@ namespace Ratr
             }
         }
 
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ModelSelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void model_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string value = model.SelectedItem.ToString();
+            string? value = model.SelectedItem.ToString();
+            ResetForm();
             switch (value)
             {
                 case "ZTE (ZXHN H267N)":
@@ -231,18 +303,17 @@ namespace Ratr
                     upload.Enabled = true;
                     break;
                 default:
-                    upload.Enabled = false;
                     break;
             }
         }
 
-        private void noticeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutMenuItemClick(object sender, EventArgs e)
         {
-            string aboutText = "Ratr v0.2.1 (By Jakiboy).\n\nhttps://github.com/Jakiboy/Ratr";
+            string aboutText = "Ratr v0.2.0 (By Jakiboy).\n\nhttps://github.com/Jakiboy/Ratr";
             MessageBox.Show(aboutText, "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void howToExportRouterDataToolStripMenuItem_Click(object sender, EventArgs e)
+        private void HowToExportMenuItemClick(object sender, EventArgs e)
         {
             var url = new ProcessStartInfo("https://github.com/Jakiboy/Ratr/blob/main/HOW.md")
             {
@@ -250,6 +321,12 @@ namespace Ratr
                 Verb = "open"
             };
             Process.Start(url);
+        }
+
+        private void ResetForm()
+        {
+            this.upload.Enabled = this.username.Enabled = this.password.Enabled = false;
+            this.username.Text = this.password.Text = "";
         }
     }
 }

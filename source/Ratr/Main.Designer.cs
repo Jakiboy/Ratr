@@ -36,10 +36,10 @@
             icon = new PictureBox();
             model = new ComboBox();
             menu = new MenuStrip();
-            aboutToolStripMenuItem = new ToolStripMenuItem();
-            howToExportRouterDataToolStripMenuItem = new ToolStripMenuItem();
+            menuToolStripMenuItem = new ToolStripMenuItem();
+            howToExportMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
-            noticeToolStripMenuItem = new ToolStripMenuItem();
+            aboutMenuItem = new ToolStripMenuItem();
             resultGroup = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)icon).BeginInit();
             menu.SuspendLayout();
@@ -59,6 +59,7 @@
             // 
             // username
             // 
+            username.Enabled = false;
             username.Location = new Point(17, 49);
             username.Name = "username";
             username.ReadOnly = true;
@@ -67,6 +68,7 @@
             // 
             // password
             // 
+            password.Enabled = false;
             password.Location = new Point(17, 97);
             password.Name = "password";
             password.ReadOnly = true;
@@ -110,43 +112,42 @@
             model.Name = "model";
             model.Size = new Size(189, 23);
             model.TabIndex = 11;
-            model.SelectedIndexChanged += model_SelectedIndexChanged;
+            model.SelectedIndexChanged += ModelSelectedIndexChanged;
             // 
             // menu
             // 
-            menu.Items.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
+            menu.Items.AddRange(new ToolStripItem[] { menuToolStripMenuItem });
             menu.Location = new Point(0, 0);
             menu.Name = "menu";
             menu.Size = new Size(334, 24);
             menu.TabIndex = 12;
             menu.Text = "menuStrip1";
             // 
-            // aboutToolStripMenuItem
+            // menuToolStripMenuItem
             // 
-            aboutToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { howToExportRouterDataToolStripMenuItem, toolStripSeparator1, noticeToolStripMenuItem });
-            aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            aboutToolStripMenuItem.Size = new Size(54, 20);
-            aboutToolStripMenuItem.Text = "Notice";
-            aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
+            menuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { howToExportMenuItem, toolStripSeparator1, aboutMenuItem });
+            menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            menuToolStripMenuItem.Size = new Size(50, 20);
+            menuToolStripMenuItem.Text = "Menu";
             // 
-            // howToExportRouterDataToolStripMenuItem
+            // howToExportMenuItem
             // 
-            howToExportRouterDataToolStripMenuItem.Name = "howToExportRouterDataToolStripMenuItem";
-            howToExportRouterDataToolStripMenuItem.Size = new Size(219, 22);
-            howToExportRouterDataToolStripMenuItem.Text = "How to export router data ?";
-            howToExportRouterDataToolStripMenuItem.Click += howToExportRouterDataToolStripMenuItem_Click;
+            howToExportMenuItem.Name = "howToExportMenuItem";
+            howToExportMenuItem.Size = new Size(219, 22);
+            howToExportMenuItem.Text = "How to export router data ?";
+            howToExportMenuItem.Click += HowToExportMenuItemClick;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(216, 6);
             // 
-            // noticeToolStripMenuItem
+            // aboutMenuItem
             // 
-            noticeToolStripMenuItem.Name = "noticeToolStripMenuItem";
-            noticeToolStripMenuItem.Size = new Size(219, 22);
-            noticeToolStripMenuItem.Text = "About";
-            noticeToolStripMenuItem.Click += noticeToolStripMenuItem_Click;
+            aboutMenuItem.Name = "aboutMenuItem";
+            aboutMenuItem.Size = new Size(219, 22);
+            aboutMenuItem.Text = "About";
+            aboutMenuItem.Click += AboutMenuItemClick;
             // 
             // resultGroup
             // 
@@ -199,9 +200,9 @@
         private PictureBox icon;
         private ComboBox model;
         private MenuStrip menu;
-        private ToolStripMenuItem aboutToolStripMenuItem;
-        private ToolStripMenuItem howToExportRouterDataToolStripMenuItem;
-        private ToolStripMenuItem noticeToolStripMenuItem;
+        private ToolStripMenuItem menuToolStripMenuItem;
+        private ToolStripMenuItem howToExportMenuItem;
+        private ToolStripMenuItem aboutMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         private GroupBox resultGroup;
     }
