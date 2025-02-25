@@ -37,7 +37,7 @@ Used to build Ratr:
 
 ## Screenshot
 
-[![screenshot](./.static/screenshot.png)](#)
+[![screenshot](./.static/screenshot.jpg)](#)
 
 ---
 
