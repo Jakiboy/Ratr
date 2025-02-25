@@ -23,9 +23,10 @@ Used to build Ratr:
 * **ZTE ZXHN H267N** ^1.x
 * **Huawei DG8245V-10** ^1.x
 
-## Decoder:
+## Decoders:
 
-* [ZTE config utility](https://github.com/mkst/zte-config-utility)
+* [Ztedecode](https://github.com/Jakiboy/Ztedecode) ([ZTE config utility](https://github.com/mkst/zte-config-utility))
+* [Hwdecode](https://github.com/Jakiboy/Hwdecode) (Huawei)
 * [AES encryption](https://pypi.org/project/pycryptodomex/)
 
 ## Download
@@ -33,7 +34,8 @@ Used to build Ratr:
 **Windows only** (No setup)
 
 * Download from: [Releases](https://github.com/Jakiboy/Ratr/releases).
-* [example.config.bin](./.static/example.config.bin).
+* [ZTE config example](./.static/zte.example.bin).
+* [Huawei config example](./.static/huawei.example.xml).
 
 ## Screenshot
 
@@ -42,4 +44,4 @@ Used to build Ratr:
 ---
 
 > [!CAUTION]
-> The file '[**decode.exe**](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/bin/decode.exe)' has been flagged as a potential threat by your antivirus software. This is a false positive, and the file is safe to use.
+> Decoders have been flagged as a potential threat by your antivirus software. This is a false positive, and the files are safe to use. You can build them from the source.
