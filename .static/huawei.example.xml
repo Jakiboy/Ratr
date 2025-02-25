@@ -1,0 +1,243 @@
+<InternetGatewayDevice DBEncrypt="1">
+<Service>
+<X_HW_WebServerConfig ListenMode="0" ListenInnerPort="80" ListenOuterPort="80" HttpsListenInnerPort="443" HttpsListenOuterPort="443"/>
+<VoiceService NumberOfInstances="1">
+<VoiceServiceInstance InstanceID="1" VoiceProfileNumberOfEntries="1">
+<VoiceProfile NumberOfInstances="1">
+<VoiceProfileInstance InstanceID="1" Name="" SignalingProtocol="SIP" Region="" DTMFMethod="RFC2833" DigitMap="" X_HW_DigitMapMatchMode="Min" X_HW_PortName="" X_HW_OverseaVer="0" X_HW_HowlerSendFlag="1" DigitMapEnable="1" Enable="Enabled" X_HW_KeepTransferActivePeriod="0" X_HW_ServerType="" X_HW_Option120PriorityMode="1">
+<SIP ProxyServer="example.ma" ProxyServerPort="5060" ProxyServerTransport="UDP" X_HW_SecondaryProxyServer="example.ma" X_HW_SecondaryProxyServerPort="5060" X_HW_SecondaryProxyServerTransport="" RegistrarServer="example.ma" RegistrarServerPort="5060" RegistrarServerTransport="UDP" X_HW_SecondaryRegistrarServer="" X_HW_SecondaryRegistrarServerPort="5060" X_HW_SecondaryRegistrarServerTransport="UDP" OutboundProxy="10.106.159.194" OutboundProxyPort="5060" X_HW_SecondaryOutboundProxy="10.112.1.4" X_HW_SecondaryOutboundProxyPort="5060" UserAgentDomain="" UserAgentPort="5060" UserAgentTransport="" VLANIDMark="" EthernetPriorityMark="-1" X_HW_802-1pMark="" DSCPMark="26" Organization="" RegistrationPeriod="3600" TimerT1="500" TimerT2="4000" TimerT4="5000" RegisterRetryInterval="30" InboundAuthUsername="" InboundAuthPassword="" UseCodecPriorityInSDPResponse="0" SIPResponseMapNumberOfElements="0" X_HW_EmergencyDSCPMark="-1">
+<ResponseMap NumberOfInstances="2">
+<ResponseMapInstance InstanceID="1" SIPResponseNumber="100" Tone="0" X_HW_Duration="60"/>
+<ResponseMapInstance InstanceID="2" SIPResponseNumber="493" Tone="1" X_HW_Duration="60"/>
+</ResponseMap>
+<X_HW_StatusCodeMap NumberOfInstances="2">
+<X_HW_StatusCodeMapInstance InstanceID="1" Scene="" StatusCode="" Q850Code=""/>
+<X_HW_StatusCodeMapInstance InstanceID="2" Scene="" StatusCode="" Q850Code=""/>
+</X_HW_StatusCodeMap>
+<X_HW_SIPDigitmap NumberOfInstances="3">
+<X_HW_SIPDigitmapInstance InstanceID="1" DMName="dmmNormal" DigitmapType="Normal" DigitMap="[xABCD].S|[xABCD].#" DigitMapStartTimer="20" DigitMapShortTimer="5" DigitMapLongTimer="10"/>
+<X_HW_SIPDigitmapInstance InstanceID="2" DMName="dmmScc" DigitmapType="SCC" DigitMap="[*#][*#0-9][0-9*].#|[*#][*#0-9][0-9*].S|##|**xx|#*#|9699#" DigitMapStartTimer="20" DigitMapShortTimer="5" DigitMapLongTimer="10"/>
+<X_HW_SIPDigitmapInstance InstanceID="3" DMName="dmmEmg" DigitmapType="Emergent" DigitMap="" DigitMapStartTimer="20" DigitMapShortTimer="5" DigitMapLongTimer="10"/>
+</X_HW_SIPDigitmap>
+<X_HW_SIPStringDefine NumberOfInstances="1">
+<X_HW_SIPStringDefineInstance InstanceID="1" StringBody=""/>
+</X_HW_SIPStringDefine>
+<X_HW_SIPSrvPri NumberOfInstances="1">
+<X_HW_SIPSrvPriInstance InstanceID="1" ServiceID="4"/>
+</X_HW_SIPSrvPri>
+<X_HW_SIPExtend PhoneContext="" ConferenceFactoryUri="" PortFilterFlag="1" Server="" MaxForwards="70" TimerTD="32000" TimerMinSe="90" TimerSessionProgress="60" TimerSessionRelProgress="150" EntityBasedSessionsTimerFlag="0" AuthHeaderFoldingEnable="0" SoftwareParameters="" ThreeWayMixType="ATAXBased" ToHeaderStrickFlag="1" ProxyRefreshMode="NoSwitch" DomainDNSGetMode="DNS-A" DNSACheckTTLEnable="1" DNSAStoreLimit="0" MultiHomeMode="DualHomeAutoSwitchOverNat" SharedUserMode="Disabled"/>
+</SIP>
+<X_HW_H248 CallAgent1="" CallAgentPort1="2944" CallAgent2="" CallAgentPort2="2944" LocalPort="2944" Domain="" DeviceName="" MIDFormat="IP" CallAgentMID1="" CallAgentMID2="" DSCPMark="26" MessageEncodingType="ABNF">
+<auth auth="0" authInitKey="" authmgid="" authHeader="0" HeaderSecurityType="md5" Rfc2833EncryptKey=""/>
+<StackInfo MsgFormat="Short" ResponseAckCtrl="0" LongTimer="30000" MaxreTransTime="4000" MinreTransTime="1000" MGProvisionalRespTime="8000" Retransfailoption="Times" MaxreTransTimes="7" MaxreTransDuration="30000" RetransMode="Fixed" FixedRetransTime="2000" MTUValue="1500" MsgSegmentation="1"/>
+<Digitmap DMName="" DigitMap="" DigitMapStartTimer="20" DigitMapShortTimer="5" DigitMapLongTimer="10"/>
+<Profile ProfileName="" ProfileBody="0=0;1=2;2=2"/>
+<Extend HeartBeatTimer="600" HeartBeatRetransTimer="60" HeartBeatRetransTimes="3" MWDBaseTime="0" MWD="60" CallholdTimer="600" Topversion="2" ProfileNego="0" ProfileIndex="0" ProfileName="" MgcSwitchMethod="SupportSwitch" PortFilterFlag="1" PortFilterTime="5" DisconnectToneType="BusyTone" DigitMapAutoMatchEnable="1" SoftwareParameters=""/>
+</X_HW_H248>
+<MGCP CallAgent1="" CallAgentPort1="2727" CallAgent2="" CallAgentPort2="2727" RetranIntervalTimer="2" MaxRetranCount="7" RegisterMode="Wildcard" LocalPort="2427" Domain="" DSCPMark="26">
+<X_HW_MGCPauth auth="Passive" authInitKey="" authKey="" authmgid="" Rfc2833EncryptKey=""/>
+<X_HW_MGCPStackInfo ProvTimer="5" AtMostOnceTimer="30" IsSendProv="0"/>
+<X_HW_MGCPExtend DigitMapInterDigitTimer="4" HeartBeatTimer="2" HeartBeatMaxreTransTimes="7" HBWithMGNameFlag="0" HeartBeatClose="0" MgcSwitchFlag="1" CallHoldFlag="0" MgcType="0" LocalBlockToneType="BusyTone" RemoteBlockToneType="BusyTone" HowlToneTimeLength="60"/>
+</MGCP>
+<RTP LocalPortMin="50000" LocalPortMax="50032" DSCPMark="46" TelephoneEventPayloadType="101" X_HW_2833FaxEventFlag="Disable" X_HW_PortName="" VLANIDMark="" X_HW_802-1pMark="" X_HW_2833FlashHook="0" X_HW_EmergencyDSCPMark="-1">
+<RTCP Enable="1" TxRepeatInterval="5000" X_HW_RtcpxrFlag="1" X_HW_VqmFlag="0"/>
+<Redundancy Enable="0" PayloadType="96" X_HW_EnableAuto="0" X_HW_EnableFixedStart="0" X_HW_Rfc2198For2833="0"/>
+<X_HW_JitBuffer MaxAdaptJB="135" MinAdaptJB="2" IniAdaptJB="2" MaxFixedJB="135" MinFixedJB="2" IniFixedJB="60"/>
+<X_HW_Extend EchoCancellationEnable="1" SilenceSuppression="0" DefaultCodec="G.711ALaw" DefaultPktLen="20" PlcFlag="0" PktLostThreshold="400" OnhookDtaLevel="-8.5dbm0" OnhookFskLevel="-8.5dbm0" OnhookChannelSeizeBit="300" OnhookMarkSignalBit="180" OnhookDtasFskInterval="250" OnhookDtasDuration="100" OffhookMarkSignalBit="80" OffhookDtasAckInterval="160" OffhookDtasAckFskInterval="50" OffhookDtasDuration="80" OffhookDtaLevel="-15.5dbm0" OffhookFskLevel="-8.5dbm0" RTPTermIDPrefix="A100" RTPTermIDStartNum="0" RTPTermIDNumWidth="6" RTPTermIDUniform="0" DualSilenceDetTime="6250" DTMFClipStartCode="15" VbdJbAdjustMode="0" DtmfDetectAlgorithmMode="0" DtmfDetectNegativeTwistAdjust="0" DtmfDetectPositiveTwistAdjust="0" DtmfDetectLevelLowerAdjust="0" DtmfDetectSnrAdjust="0" DTMFEraseBeforeEnd="0" DTMFBufferMode="2"/>
+</RTP>
+<Tone>
+<Event NumberOfInstances="1">
+<EventInstance InstanceID="1" Function="" ToneID=""/>
+</Event>
+<Description NumberOfInstances="1">
+<DescriptionInstance InstanceID="1" EntryID="101" ToneEnable="1" ToneName="" TonePattern="1" ToneFile="" ToneRepetitions="0"/>
+</Description>
+<TonePattern NumberOfInstances="1">
+<TonePatternInstance InstanceID="1" EntryID="1" ToneOn="1" Frequency1="300" Power1="-100" Frequency2="0" Power2="0" Frequency3="0" Power3="0" Frequency4="0" Power4="0" Duration="300" NextEntryID="2"/>
+</TonePattern>
+</Tone>
+<FaxT38 Enable="0" BitRate="0" TCFMethod="Network" HighSpeedRedundancy="3" LowSpeedRedundancy="3" X_HW_PortAdd2="0" X_HW_NegoAcceptWhenDisabled="1" X_HW_V21PreProcessMode="0" X_HW_T38TrainingComplement="0"/>
+<X_HW_G711FAX/>
+<X_HW_FaxModem FaxNego="1" FaxModemPktFix10ms="0" FaxNegoFlow="V3" ModemEventMode="Direct" FaxModemVbdCodec="G.711ALaw" FaxModemVbdPTMode="Static" FaxModemVbdPayload="99" IpDtmfFallbackVoice="0"/>
+<X_HW_Ring>
+<Mapping NumberOfInstances="1">
+<MappingInstance InstanceID="1" Pattern="0" CadenceType="0" InitialRing="0" RingName=""/>
+</Mapping>
+<UserDefine NumberOfInstances="1">
+<UserDefineInstance InstanceID="1" RingType="32" RingPara1="1000" RingPara2="4000" RingPara3="0" RingPara4="0" RingPara5="0" RingPara6="0"/>
+</UserDefine>
+</X_HW_Ring>
+<X_HW_Signal/>
+<Line NumberOfInstances="2">
+<LineInstance InstanceID="1" Enable="Enabled" DirectoryNumber="" PhyReferenceList="1" X_HW_Priority="0">
+<SIP AuthUserName="0123456789@example.ma" AuthPassword="$2q~2-GCAixHu\rBG`%5K;`&gt;*@NO~q58_Yo!@ADr!W$" URI="0123456789">
+<X_HW_Digitmap DMName="" DigitMap="" DigitMapStartTimer="20" DigitMapShortTimer="5" DigitMapLongTimer="10"/>
+</SIP>
+<X_HW_H248 LineName=""/>
+<MGCP LineName=""/>
+<CallingFeatures CallerIDEnable="1" CallerIDNameEnable="0" CallerIDName="" CallWaitingEnable="1" CallForwardUnconditionalEnable="0" CallForwardUnconditionalNumber="" CallForwardOnBusyEnable="0" CallForwardOnBusyNumber="" CallForwardOnNoAnswerEnable="0" CallForwardOnNoAnswerNumber="" CallForwardOnNoAnswerRingCount="10" CallTransferEnable="1" MWIEnable="1" X_HW_MWIMode="Deferred" X_HW_HotlineEnable="0" X_HW_HotlineNumber="" X_HW_HotlineTimer="5" X_HW_3WayEnable="1" X_HW_CallHoldEnable="1" X_HW_ConferenceEnable="0" X_HW_CentrexPrefix="" X_HW_CentrexDialSecondaryEnable="0" X_HW_MCIDEnable="0" X_HW_DigitsSendingMethod="OverlapInDialogue" X_HW_CancelCallWaitingDuringCallEnable="1" X_HW_HotlineMode="0" X_HW_CLIPEnable="1" AnonymousCalEnable="0"/>
+<VoiceProcessing TransmitGain="0" ReceiveGain="0"/>
+<Codec>
+<List NumberOfInstances="1">
+<ListInstance InstanceID="1" PacketizationPeriod="20" Enable="1" Priority="3" Codecs="G.711"/>
+</List>
+</Codec>
+<Stats ResetStatistics="0" X_HW_PartResetStatistics="" PacketsSent="0" PacketsReceived="0" BytesSent="0" BytesReceived="0" PacketsLost="0" ReceivePacketLossRate="0" FarEndPacketLossRate="0" ReceiveInterarrivalJitter="0" FarEndInterarrivalJitter="0" RoundTripDelay="0" IncomingCallsReceived="0" IncomingCallsAnswered="0" IncomingCallsConnected="0" IncomingCallsFailed="0" OutgoingCallsAttempted="0" OutgoingCallsAnswered="0" OutgoingCallsConnected="0" OutgoingCallsFailed="0" CallsDropped="0" TotalCallTime="0" ServerDownTime="0" AverageReceiveInterarrivalJitter="0" AverageFarEndInterarrivalJitter="0" AverageRoundTripDelay="0" X_HW_PacketLossRate="0" X_HW_MaxReceiveInterarrivalJitter="0" X_HW_MaxFarEndInterarrivalJitter="0" Overruns="0" Underruns="0" X_HW_RTPErrors="0" X_HW_MaxTimeBetweenRTCPPackets="0" X_HW_CallSetupTimerMax="0" X_HW_AnalogPortReleasesCount="0" X_HW_AnalogPortOffhookTimerMax="0" X_HW_SIPCallFailedToConnectCounter="0" X_HW_SIPCallTimeoutCounter="0" X_HW_SIPCallFailureReceivedCounter="0" X_HW_SIPCallFailedToAuthenticateCounter="0"/>
+<X_HW_CtLastRegisterError Reason="2"/>
+</LineInstance>
+<LineInstance InstanceID="2" Enable="Enabled" DirectoryNumber="" PhyReferenceList="2" X_HW_Priority="0">
+<SIP AuthUserName="" AuthPassword="" URI="">
+<X_HW_Digitmap DMName="" DigitMap="" DigitMapStartTimer="20" DigitMapShortTimer="5" DigitMapLongTimer="10"/>
+</SIP>
+<X_HW_H248 LineName=""/>
+<MGCP LineName=""/>
+<CallingFeatures CallerIDEnable="1" CallerIDNameEnable="0" CallerIDName="" CallWaitingEnable="1" CallForwardUnconditionalEnable="0" CallForwardUnconditionalNumber="" CallForwardOnBusyEnable="0" CallForwardOnBusyNumber="" CallForwardOnNoAnswerEnable="0" CallForwardOnNoAnswerNumber="" CallForwardOnNoAnswerRingCount="10" CallTransferEnable="1" MWIEnable="1" X_HW_MWIMode="Deferred" X_HW_HotlineEnable="0" X_HW_HotlineNumber="" X_HW_HotlineTimer="5" X_HW_3WayEnable="1" X_HW_CallHoldEnable="1" X_HW_ConferenceEnable="0" X_HW_CentrexPrefix="" X_HW_CentrexDialSecondaryEnable="0" X_HW_MCIDEnable="0" X_HW_DigitsSendingMethod="OverlapInDialogue" X_HW_CancelCallWaitingDuringCallEnable="1" X_HW_HotlineMode="0"/>
+<VoiceProcessing TransmitGain="0" ReceiveGain="0"/>
+<Codec>
+<List NumberOfInstances="1">
+<ListInstance InstanceID="1" PacketizationPeriod="20" Enable="1" Priority="3" Codecs="G.711"/>
+</List>
+</Codec>
+<Stats ResetStatistics="0" X_HW_PartResetStatistics="" PacketsSent="0" PacketsReceived="0" BytesSent="0" BytesReceived="0" PacketsLost="0" ReceivePacketLossRate="0" FarEndPacketLossRate="0" ReceiveInterarrivalJitter="0" FarEndInterarrivalJitter="0" RoundTripDelay="0" IncomingCallsReceived="0" IncomingCallsAnswered="0" IncomingCallsConnected="0" IncomingCallsFailed="0" OutgoingCallsAttempted="0" OutgoingCallsAnswered="0" OutgoingCallsConnected="0" OutgoingCallsFailed="0" CallsDropped="0" TotalCallTime="0" ServerDownTime="0" AverageReceiveInterarrivalJitter="0" AverageFarEndInterarrivalJitter="0" AverageRoundTripDelay="0" X_HW_PacketLossRate="0" X_HW_MaxReceiveInterarrivalJitter="0" X_HW_MaxFarEndInterarrivalJitter="0" Overruns="0" Underruns="0" X_HW_RTPErrors="0" X_HW_MaxTimeBetweenRTCPPackets="0" X_HW_CallSetupTimerMax="0" X_HW_AnalogPortReleasesCount="0" X_HW_AnalogPortOffhookTimerMax="0" X_HW_SIPCallFailedToConnectCounter="0" X_HW_SIPCallTimeoutCounter="0" X_HW_SIPCallFailureReceivedCounter="0" X_HW_SIPCallFailedToAuthenticateCounter="0"/>
+<X_HW_CtLastRegisterError Reason="2"/>
+</LineInstance>
+</Line>
+</VoiceProfileInstance>
+<VoiceProfileInstance InstanceID="4294967294" Name="" SignalingProtocol="SIP" Region="" DTMFMethod="RFC2833" DigitMap="" X_HW_DigitMapMatchMode="Min" X_HW_PortName="" X_HW_OverseaVer="0" X_HW_HowlerSendFlag="1" DigitMapEnable="1" Enable="Enabled" X_HW_KeepTransferActivePeriod="0" X_HW_ServerType="" X_HW_Option120PriorityMode="1">
+<SIP ProxyServer="" ProxyServerPort="5060" ProxyServerTransport="UDP" X_HW_SecondaryProxyServer="" X_HW_SecondaryProxyServerPort="5060" X_HW_SecondaryProxyServerTransport="" RegistrarServer="example.ma" RegistrarServerPort="5060" RegistrarServerTransport="UDP" X_HW_SecondaryRegistrarServer="" X_HW_SecondaryRegistrarServerPort="5060" X_HW_SecondaryRegistrarServerTransport="UDP" OutboundProxy="10.112.1.4" OutboundProxyPort="5060" X_HW_SecondaryOutboundProxy="10.112.1.4" X_HW_SecondaryOutboundProxyPort="5060" UserAgentDomain="" UserAgentPort="5060" UserAgentTransport="" VLANIDMark="" EthernetPriorityMark="-1" X_HW_802-1pMark="" DSCPMark="26" Organization="" RegistrationPeriod="300" TimerT1="500" TimerT2="4000" TimerT4="5000" RegisterRetryInterval="30" InboundAuthUsername="" InboundAuthPassword="" UseCodecPriorityInSDPResponse="0" SIPResponseMapNumberOfElements="0" X_HW_EmergencyDSCPMark="-1">
+<ResponseMap NumberOfInstances="2">
+<ResponseMapInstance InstanceID="1" SIPResponseNumber="100" Tone="0" X_HW_Duration="60"/>
+<ResponseMapInstance InstanceID="2" SIPResponseNumber="493" Tone="1" X_HW_Duration="60"/>
+</ResponseMap>
+<X_HW_StatusCodeMap NumberOfInstances="2">
+<X_HW_StatusCodeMapInstance InstanceID="1" Scene="" StatusCode="" Q850Code=""/>
+<X_HW_StatusCodeMapInstance InstanceID="2" Scene="" StatusCode="" Q850Code=""/>
+</X_HW_StatusCodeMap>
+<X_HW_SIPProfile ProfileName="" ProfileBody="1=2;2=1"/>
+<X_HW_SIPDigitmap NumberOfInstances="3">
+<X_HW_SIPDigitmapInstance InstanceID="1" DMName="dmmNormal" DigitmapType="Normal" DigitMap="[xABCD].S|[xABCD].#" DigitMapStartTimer="20" DigitMapShortTimer="5" DigitMapLongTimer="10"/>
+<X_HW_SIPDigitmapInstance InstanceID="2" DMName="dmmScc" DigitmapType="SCC" DigitMap="[*#][*#0-9][0-9*].#|[*#][*#0-9][0-9*].S|##|**xx|#*#|9699#" DigitMapStartTimer="20" DigitMapShortTimer="5" DigitMapLongTimer="10"/>
+<X_HW_SIPDigitmapInstance InstanceID="3" DMName="dmmEmg" DigitmapType="Emergent" DigitMap="" DigitMapStartTimer="20" DigitMapShortTimer="5" DigitMapLongTimer="10"/>
+</X_HW_SIPDigitmap>
+<X_HW_SIPStringDefine NumberOfInstances="1">
+<X_HW_SIPStringDefineInstance InstanceID="1" StringBody=""/>
+</X_HW_SIPStringDefine>
+<X_HW_SIPSrvPri NumberOfInstances="1">
+<X_HW_SIPSrvPriInstance InstanceID="1" ServiceID="4"/>
+</X_HW_SIPSrvPri>
+<X_HW_SIPExtend PhoneContext="" ConferenceFactoryUri="" PortFilterFlag="1" Server="" MaxForwards="70" TimerTD="32000" TimerMinSe="90" TimerSessionProgress="60" TimerSessionRelProgress="150" EntityBasedSessionsTimerFlag="0" AuthHeaderFoldingEnable="0" SoftwareParameters="" ThreeWayMixType="ATAXBased" ToHeaderStrickFlag="1" ProxyRefreshMode="NoSwitch" DomainDNSGetMode="DNS-A" DNSACheckTTLEnable="1" DNSAStoreLimit="0" MultiHomeMode="DualHomeAutoSwitchOverNat" SharedUserMode="Disabled"/>
+</SIP>
+<X_HW_H248 CallAgent1="" CallAgentPort1="2944" CallAgent2="" CallAgentPort2="2944" LocalPort="2944" Domain="" DeviceName="" MIDFormat="IP" CallAgentMID1="" CallAgentMID2="" DSCPMark="26" MessageEncodingType="ABNF">
+<auth auth="0" authInitKey="" authmgid="" authHeader="0" HeaderSecurityType="md5" Rfc2833EncryptKey=""/>
+<StackInfo MsgFormat="Short" ResponseAckCtrl="0" LongTimer="30000" MaxreTransTime="4000" MinreTransTime="1000" MGProvisionalRespTime="8000" Retransfailoption="Times" MaxreTransTimes="7" MaxreTransDuration="30000" RetransMode="Fixed" FixedRetransTime="2000" MTUValue="1500" MsgSegmentation="1"/>
+<Digitmap DMName="" DigitMap="" DigitMapStartTimer="20" DigitMapShortTimer="5" DigitMapLongTimer="10"/>
+<Profile ProfileName="" ProfileBody="0=0;1=2;2=2"/>
+<Extend HeartBeatTimer="600" HeartBeatRetransTimer="60" HeartBeatRetransTimes="3" MWDBaseTime="0" MWD="60" CallholdTimer="600" Topversion="2" ProfileNego="0" ProfileIndex="0" ProfileName="" MgcSwitchMethod="SupportSwitch" PortFilterFlag="1" PortFilterTime="5" DisconnectToneType="BusyTone" DigitMapAutoMatchEnable="1" SoftwareParameters=""/>
+</X_HW_H248>
+<MGCP CallAgent1="" CallAgentPort1="2727" CallAgent2="" CallAgentPort2="2727" RetranIntervalTimer="2" MaxRetranCount="7" RegisterMode="Wildcard" LocalPort="2427" Domain="" DSCPMark="26">
+<X_HW_MGCPauth auth="Passive" authInitKey="" authKey="" authmgid="" Rfc2833EncryptKey=""/>
+<X_HW_MGCPStackInfo ProvTimer="5" AtMostOnceTimer="30" IsSendProv="0"/>
+<X_HW_MGCPExtend DigitMapInterDigitTimer="4" HeartBeatTimer="2" HeartBeatMaxreTransTimes="7" HBWithMGNameFlag="0" HeartBeatClose="0" MgcSwitchFlag="1" CallHoldFlag="0" MgcType="0" LocalBlockToneType="BusyTone" RemoteBlockToneType="BusyTone" HowlToneTimeLength="60"/>
+</MGCP>
+<RTP LocalPortMin="50000" LocalPortMax="50032" DSCPMark="46" TelephoneEventPayloadType="101" X_HW_2833FaxEventFlag="Disable" X_HW_PortName="" VLANIDMark="" X_HW_802-1pMark="" X_HW_2833FlashHook="0" X_HW_EmergencyDSCPMark="-1">
+<RTCP Enable="1" TxRepeatInterval="5000" X_HW_RtcpxrFlag="1" X_HW_VqmFlag="0"/>
+<Redundancy Enable="0" PayloadType="96" X_HW_EnableAuto="0" X_HW_EnableFixedStart="0" X_HW_Rfc2198For2833="0"/>
+<X_HW_JitBuffer MaxAdaptJB="135" MinAdaptJB="2" IniAdaptJB="2" MaxFixedJB="135" MinFixedJB="2" IniFixedJB="60"/>
+<X_HW_Extend EchoCancellationEnable="1" SilenceSuppression="0" DefaultCodec="G.711ALaw" DefaultPktLen="20" PlcFlag="0" PktLostThreshold="400" OnhookDtaLevel="-8.5dbm0" OnhookFskLevel="-8.5dbm0" OnhookChannelSeizeBit="300" OnhookMarkSignalBit="180" OnhookDtasFskInterval="250" OnhookDtasDuration="100" OffhookMarkSignalBit="80" OffhookDtasAckInterval="160" OffhookDtasAckFskInterval="50" OffhookDtasDuration="80" OffhookDtaLevel="-15.5dbm0" OffhookFskLevel="-8.5dbm0" RTPTermIDPrefix="A100" RTPTermIDStartNum="0" RTPTermIDNumWidth="6" RTPTermIDUniform="0" DualSilenceDetTime="6250" DTMFClipStartCode="15" VbdJbAdjustMode="0" DtmfDetectAlgorithmMode="0" DtmfDetectNegativeTwistAdjust="0" DtmfDetectPositiveTwistAdjust="0" DtmfDetectLevelLowerAdjust="0" DtmfDetectSnrAdjust="0" DTMFEraseBeforeEnd="0" DTMFBufferMode="2"/>
+</RTP>
+<Tone>
+<Event NumberOfInstances="1">
+<EventInstance InstanceID="1" Function="" ToneID=""/>
+</Event>
+<Description NumberOfInstances="1">
+<DescriptionInstance InstanceID="1" EntryID="101" ToneEnable="1" ToneName="" TonePattern="1" ToneFile="" ToneRepetitions="0"/>
+</Description>
+<TonePattern NumberOfInstances="1">
+<TonePatternInstance InstanceID="1" EntryID="1" ToneOn="1" Frequency1="300" Power1="-100" Frequency2="0" Power2="0" Frequency3="0" Power3="0" Frequency4="0" Power4="0" Duration="300" NextEntryID="2"/>
+</TonePattern>
+</Tone>
+<FaxT38 Enable="0" BitRate="0" TCFMethod="Network" HighSpeedRedundancy="3" LowSpeedRedundancy="3" X_HW_PortAdd2="0" X_HW_NegoAcceptWhenDisabled="1" X_HW_V21PreProcessMode="0" X_HW_T38TrainingComplement="0"/>
+<X_HW_G711FAX/>
+<X_HW_FaxModem FaxNego="1" FaxModemPktFix10ms="0" FaxNegoFlow="V3" ModemEventMode="Direct" FaxModemVbdCodec="G.711ALaw" FaxModemVbdPTMode="Static" FaxModemVbdPayload="99" IpDtmfFallbackVoice="0"/>
+<X_HW_Ring>
+<Mapping NumberOfInstances="1">
+<MappingInstance InstanceID="1" Pattern="0" CadenceType="0" InitialRing="0" RingName=""/>
+</Mapping>
+<UserDefine NumberOfInstances="1">
+<UserDefineInstance InstanceID="1" RingType="32" RingPara1="1000" RingPara2="4000" RingPara3="0" RingPara4="0" RingPara5="0" RingPara6="0"/>
+</UserDefine>
+</X_HW_Ring>
+<X_HW_Signal/>
+<Line NumberOfInstances="1">
+<LineInstance InstanceID="1" Enable="Disabled" DirectoryNumber="" PhyReferenceList="" X_HW_Priority="0">
+<SIP AuthUserName="" AuthPassword="" URI="">
+<X_HW_Digitmap DMName="" DigitMap="" DigitMapStartTimer="20" DigitMapShortTimer="5" DigitMapLongTimer="10"/>
+</SIP>
+<X_HW_H248 LineName=""/>
+<MGCP LineName=""/>
+<CallingFeatures CallerIDEnable="1" CallerIDNameEnable="0" CallerIDName="" CallWaitingEnable="1" CallForwardUnconditionalEnable="0" CallForwardUnconditionalNumber="" CallForwardOnBusyEnable="0" CallForwardOnBusyNumber="" CallForwardOnNoAnswerEnable="0" CallForwardOnNoAnswerNumber="" CallForwardOnNoAnswerRingCount="10" CallTransferEnable="1" MWIEnable="1" X_HW_MWIMode="Deferred" X_HW_HotlineEnable="0" X_HW_HotlineNumber="" X_HW_HotlineTimer="5" X_HW_3WayEnable="1" X_HW_CallHoldEnable="1" X_HW_ConferenceEnable="0" X_HW_CentrexPrefix="" X_HW_CentrexDialSecondaryEnable="0" X_HW_MCIDEnable="0" X_HW_DigitsSendingMethod="OverlapInDialogue" X_HW_CancelCallWaitingDuringCallEnable="1" X_HW_HotlineMode="0" X_HW_CLIPEnable="1" AnonymousCalEnable="0"/>
+<VoiceProcessing TransmitGain="0" ReceiveGain="0"/>
+<Codec>
+<List NumberOfInstances="1">
+<ListInstance InstanceID="1" PacketizationPeriod="20" Enable="1" Priority="3" Codecs="G.711"/>
+</List>
+</Codec>
+</LineInstance>
+</Line>
+</VoiceProfileInstance>
+</VoiceProfile>
+<PhyInterface NumberOfInstances="2">
+<PhyInterfaceInstance InstanceID="1" InterfaceID="1" PhyPort="0">
+<X_HW_IPSpc Enable="0" PortName="" LocalTransport="" RemoteIP="" RemoteTransport="" Codecs="G.711ALaw" PacketizationPeriod="20" MediaMode="SendReceive" EchoCancellationEnable="0" SilenceSuppression="0" JbMode="Static"/>
+<X_HW_DspTemplate Enable="0" EchoCancellationEnable="0" SilenceSuppression="0" JbMode="Static" NLP="Closed" WorkMode="Modem"/>
+<X_HW_Extend DialMode="First" DialPulseInterval="240" DialPulsePeriodUpperLimit="200" DialPulsePeriodLowerLimit="50" DialPulseMakeUpperLimit="90" DialPulseMakeLowerLimit="30" DialPulseBreakUpperLimit="90" DialPulseBreakLowerLimit="30" CallerOffhookShakeTime="80" CalledOffhookShakeTime="200" HookFlashUpTime="300" HookFlashDownTime="90" OnhookConfirmTime="0" Impedance="2" Current="25" CurrentOnPark="0" RingFrequency="1" RingVoltage="0" DCTime="100" SendGain="0db" ReceiveGain="-7db" ReversePolePulse="1" ReversePolePulseLevel="300" KcType="16Kc" KcHighLevel="100" KcLowLevel="300" KcVoltage="0" FskTime="800" ClipTransWhen="AfterRing" ClipFormat="Mdmf-fsk" ClipReversePole="0" ClipFskMode="BELL_202" ClipTasPattern="NO-TAS" ClipForceSendFsk="0" ClipSendDateTime="1" BellAnsEnable="1" DetectAnsbarBySingleToneEnable="0" MWIRingFlag="0" ReversePoleOnAnswer="0" ToneIdForNoLineConfig="1" DspTemplateName="" UserDefineRingVoltage="74" RingDCVoltageOverlapped="0" DspHighPassFilterEnable="1" DspDtmfDetHighPassFilterValue="0" ClipNormalPoleAfterFsk="1" PowerDenyForOutOfService="0" V21lANSEnable="0" V21hANSEnable="1" Bell103MarkANSEnable="0" V22usb1DualFreqANSEnable="1" V22usb1TriFreqANSEnable="0" V25ctANSEnable="0" V32aaANSEnable="1" V18aANSEnable="0" V8bisCReANSEnable="1"/>
+<Tests TestState="" TestSelector="" PhoneConnectivity="">
+<X_HW_SimulateTest TestType="None" CalledNumber="" IsAuto="0" CallHoldTimer="30" CalledWaitTimer="30" DialDTMFConfirmEnable="0" DailDTMFConfirmEnable="0" DialDTMFConfirmNumber="#" DailDTMFConfirmNumber="#" CallType="Default" DTMFSendSequence="" DialDTMFConfirmResult="0" DailDTMFConfirmResult="0" CalledNumberToRemote="" CallerFailReason="" CalledFailReason="" FailedResponseCode="0" AutoTestResult="" Status="" Conclusion="Success" DTMFReceiveSequence=""/>
+</Tests>
+</PhyInterfaceInstance>
+<PhyInterfaceInstance InstanceID="2" InterfaceID="2" PhyPort="1">
+<X_HW_IPSpc Enable="0" PortName="" LocalTransport="" RemoteIP="" RemoteTransport="" Codecs="G.711ALaw" PacketizationPeriod="20" MediaMode="SendReceive" EchoCancellationEnable="0" SilenceSuppression="0" JbMode="Static"/>
+<X_HW_DspTemplate Enable="0" EchoCancellationEnable="0" SilenceSuppression="0" JbMode="Static" NLP="Closed" WorkMode="Modem"/>
+<X_HW_Extend DialMode="First" DialPulseInterval="240" DialPulsePeriodUpperLimit="200" DialPulsePeriodLowerLimit="50" DialPulseMakeUpperLimit="90" DialPulseMakeLowerLimit="30" DialPulseBreakUpperLimit="90" DialPulseBreakLowerLimit="30" CallerOffhookShakeTime="80" CalledOffhookShakeTime="200" HookFlashUpTime="300" HookFlashDownTime="90" OnhookConfirmTime="0" Impedance="2" Current="25" CurrentOnPark="0" RingFrequency="1" RingVoltage="0" DCTime="100" SendGain="0db" ReceiveGain="-7db" ReversePolePulse="1" ReversePolePulseLevel="300" KcType="16Kc" KcHighLevel="100" KcLowLevel="300" KcVoltage="0" FskTime="800" ClipTransWhen="AfterRing" ClipFormat="Mdmf-fsk" ClipReversePole="0" ClipFskMode="BELL_202" ClipTasPattern="NO-TAS" ClipForceSendFsk="0" ClipSendDateTime="1" BellAnsEnable="1" DetectAnsbarBySingleToneEnable="0" MWIRingFlag="0" ReversePoleOnAnswer="0" ToneIdForNoLineConfig="1" DspTemplateName="" UserDefineRingVoltage="74" RingDCVoltageOverlapped="0" DspHighPassFilterEnable="1" DspDtmfDetHighPassFilterValue="0" ClipNormalPoleAfterFsk="1" PowerDenyForOutOfService="0" V21lANSEnable="0" V21hANSEnable="1" Bell103MarkANSEnable="0" V22usb1DualFreqANSEnable="1" V22usb1TriFreqANSEnable="0" V25ctANSEnable="0" V32aaANSEnable="1" V18aANSEnable="0" V8bisCReANSEnable="1"/>
+<Tests TestState="" TestSelector="" PhoneConnectivity="">
+<X_HW_SimulateTest TestType="None" CalledNumber="" IsAuto="0" CallHoldTimer="30" CalledWaitTimer="30" DialDTMFConfirmEnable="0" DailDTMFConfirmEnable="0" DialDTMFConfirmNumber="#" DailDTMFConfirmNumber="#" CallType="Default" DTMFSendSequence="" DialDTMFConfirmResult="0" DailDTMFConfirmResult="0" CalledNumberToRemote="" CallerFailReason="" CalledFailReason="" FailedResponseCode="0" AutoTestResult="" Status="" Conclusion="Success" DTMFReceiveSequence=""/>
+</Tests>
+</PhyInterfaceInstance>
+</PhyInterface>
+<X_HW_RemoteCapServer PortName="" LocalTransport="50100" RemoteIP="" RemoteTransport="0"/>
+<X_HW_DialSN Prefix="**" TimerWaitInput="10" TimerCompleteInput="10" InputToneId="" FailSetToneId="101" SucessSetToneId="102" IsDialSNSecurityDisabled="0" IsHaveAuthed="0" DialSNMode="0" PONAuthInfoQueryCode="" PONAuthInfoToneId="0"/>
+<X_HW_InnerCall Enable="0" Prefix="**123#"/>
+<X_HW_SimulateTestParameters CalledNumberDialInterval="500" DialDTMFConfirmInputToneId="103" DialDTMFConfirmFailToneId="104" DialDTMFConfirmSucessToneId="105" DTMFSendDelay="3" DTMFSendPeriod="100" DTMFSendInterval="100"/>
+<X_HW_InnerParameters AutoResetInterfaceTimer="3000" FskBindReceiveGainEnable="1" ToneBindReceiveGainEnable="0" SendGainRelativeEnable="0" DelayResetTimerOnExistCall="0" GracefulTimerOnCallClear="30" ConfigurationInterruptCallEnable="1" CodecPreferredMode="Narrowband" UserAgentDomainPriorityMode="0" VBDDualDetectReportMode="1" RegisterExpiresPriorityMode="0" OAMConfigEnable="1" SIPAuthPasswordDispalyMode="0" PingTestEnable="0" RegisterTimeOutArpPingEnable="0" NoneOMCISIPAlarmEnable="0" RFC2833MarkPktRetransEnable="1" G722RTPClockRate="0" ConfigureIsolation="0" AdoptOMCIDTMFMethod="1" Option120DisplayMode="0"/>
+<X_HW_LineTestThreshold Threshold0="55" Threshold1="15" Threshold2="20000" Threshold3="3000" Threshold4="100000" Threshold5="100" Threshold6="2000" Threshold7="2000" Threshold8="2000" Threshold9="20000" Threshold10="700" Threshold11="200" Threshold12="350" Threshold13="50"/>
+<X_HW_DspTemplate>
+<ServiceNumMapping/>
+</X_HW_DspTemplate>
+<DECT>
+<Base NumberOfInstances="1">
+<BaseInstance InstanceID="1" Enable="0" Status="" RFPI="" PIN="" FirmwareVersion="" EepromVersion=""/>
+</Base>
+</DECT>
+<X_HW_RobotParameters IntelligentAnnounceEnable="0"/>
+</VoiceServiceInstance>
+</VoiceService>
+<X_HW_IPTV IGMPEnable="1" ProxyEnable="1" SnoopingEnable="1" IGMPVersion="2" Robustness="2" GenQueryInterval="125" GenResponseTime="100" SpQueryNumber="2" SpQueryInterval="10" SpResponseTime="10" RemarkIPPrecedence="-1" RemarkPri="6" STBNumber="0" PPPoEWanSnoopingMode="IPoEAndPPPoE" BridgeWanProxyEnable="0" PPPoEWanProxyMode="PPPoE" MLDProxyEnable="0" MLDSnoopingEnable="1" MLDVersion="1" HostTimeout="0" MrouterTimeout="0" LeaveTimeout="0" MaxGroups="255" LastMemberQueryInterval="0" X_HW_Upstream_WAN="" StartUpQueryInterval="0" StartUpQueryCount="2" UnsolicitedReportInterval="100"/>
+<X_HW_Printer Enable="0" Name=""/>
+<StorageService NumberOfInstances="1">
+<StorageServiceInstance InstanceID="1" Enable="1" PhysicalMediumNumberOfEntries="0" LogicalVolumeNumberOfEntries="0" UserAccountNumberOfEntries="0">
+<NetInfo HostName="WAP" DomainName="null"/>
+<NetworkServer SMBEnable="0" NetworkProtocolAuthReq="0"/>
+<SMBServer Netbios="" Workgroup="null"/>
+</StorageServiceInstance>
+</StorageService>
+<X_HW_PortalManagement Enable="0" DefaultUrl=""/>
+<X_HW_AccessLimit Mode="Off" TotalTerminalNumber="0"/>
+<X_HW_VideoDevice Enable="0" DSCP="40"/>
+<X_HW_E8CIPFwd IPForwardModeEnabled="0"/>
+<X_CU_User NumberOfInstances="1">
+<X_CU_UserInstance InstanceID="1" Enable="1" Name="" Description="" NumberOfSubuser="4" URLListFilterMode="0" MACFilterNumberOfEntries="0" IPFilterNumberOfEntries="0" WhiteListNumberofEntries="0" BlackListNumberofEntries="0"/>
+</X_CU_User>
+<MultiUpLinkSelectPolicy OperatingMode="AUTO" CurrentOperatingMode="ADSL" OperatingModePriority="DSL,OPTIC,ETH"/>
+<X_HW_DmsService Enable="0" ShareAllPath="1"/>
+</Service>
+</InternetGatewayDevice>

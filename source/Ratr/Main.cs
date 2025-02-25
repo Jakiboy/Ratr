@@ -7,6 +7,7 @@ namespace Ratr
     {
         private readonly string tempFolder;
         private readonly string guid;
+        private string modelName;
 
         public Main()
         {
@@ -14,15 +15,25 @@ namespace Ratr
             this.StartPosition = FormStartPosition.CenterScreen;
             this.tempFolder = Path.GetTempPath();
             this.guid = Guid.NewGuid().ToString() + "-";
+            this.modelName = "";
         }
 
-        private void FormLoad(object sender, EventArgs e) { }
+        private void FormLoad(object sender, EventArgs e)
+        {
+            model.SelectedIndex = 0;
+        }
 
         private void UploadClick(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
+            string filter = "Binary files (*.bin)|*.bin";
+            if (this.modelName == "huawei-dg8245v-10")
             {
-                Filter = "Binary files (*.bin)|*.bin"
+                filter = "XML files (*.xml)|*.xml";
+            }
+
+            OpenFileDialog openFileDialog = new()
+            {
+                Filter = filter
             };
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -36,7 +47,7 @@ namespace Ratr
                     // Upload
                     string filePath = openFileDialog.FileName;
                     string fileName = guid + Path.GetFileName(filePath);
-                    string binFile = Path.Combine(tempFolder, fileName);
+                    string configFile = Path.Combine(tempFolder, fileName);
 
                     // Ensure the temp folder exists
                     if (!Directory.Exists(tempFolder))
@@ -45,24 +56,34 @@ namespace Ratr
                     }
 
                     // Copy the file to the temp folder
-                    File.Copy(filePath, binFile, overwrite: true); // Overwrite if file already exists
+                    File.Copy(filePath, configFile, overwrite: true); // Overwrite if file already exists
 
                     // Decode init
-                    string decoder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "decode.exe");
+                    string decoder = "decoder/zte.exe";
+                    if (this.modelName == "huawei-dg8245v-10")
+                    {
+                        decoder = "decoder/huawei.exe";
+                    }
+
+                    decoder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, decoder);
                     string xmlFile = Path.Combine(tempFolder, guid + "config.xml");
                     decoder = Path.GetFullPath(decoder);
 
                     // Check if the decoder executable exists
                     if (!File.Exists(decoder))
                     {
-                        MessageBox.Show("Decoder is missing. Please ensure 'decode.exe' is placed in the root folder.", "Decoder Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Decoder is missing. Please ensure '{decoder}' exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    string args = $"/c {decoder} {binFile} {xmlFile} --try-all-known-keys";
+                    string args = $"/c {decoder} {configFile} {xmlFile} --try-all-known-keys";
+                    if (this.modelName == "huawei-dg8245v-10")
+                    {
+                        args = $"/c {decoder} XXXX";
+                    }
 
                     // Decode process
-                    Process process = new Process
+                    Process process = new()
                     {
                         StartInfo = new ProcessStartInfo
                         {
@@ -80,12 +101,12 @@ namespace Ratr
                     // Check if the decoding process succeeded
                     if (process.ExitCode != 0)
                     {
-                        MessageBox.Show("Failed to decode the .bin file. Please ensure the file is valid and try again.", "Decoding Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Failed to decode config file. Please ensure the file is valid and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    // Parse the decoded XML file
-                    ParseXML(xmlFile);
+                    // Parse ZTE decoded XML file
+                    ParseZteXML(xmlFile);
                 }
                 catch (Exception ex)
                 {
@@ -96,36 +117,36 @@ namespace Ratr
                 {
                     // Re-enable the upload button and reset its text
                     this.upload.Enabled = true;
-                    this.upload.Text = "Upload .bin";
+                    this.upload.Text = "Choose file";
                 }
             }
         }
 
-        private void ParseXML(string xmlFile)
+        private void ParseZteXML(string xmlFile)
         {
             try
             {
                 // Get file
-                XmlDocument xmlDoc = new XmlDocument();
+                XmlDocument xmlDoc = new();
                 xmlDoc.Load(xmlFile);
 
                 // Get nodes
-                XmlNode dbNode = xmlDoc.SelectSingleNode("//DB");
+                XmlNode? dbNode = xmlDoc.SelectSingleNode("//DB");
                 if (dbNode == null)
                 {
                     MessageBox.Show("The XML file does not contain a valid 'DB' node.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                XmlNode tblNode = dbNode.SelectSingleNode("//Tbl[@name='PPPIF']");
+                XmlNode? tblNode = dbNode.SelectSingleNode("//Tbl[@name='PPPIF']");
                 if (tblNode == null)
                 {
                     MessageBox.Show("The 'PPPIF' table was not found in the XML file.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                XmlNode uNode = tblNode.SelectSingleNode(".//DM[@name='Username']");
-                XmlNode pNode = tblNode.SelectSingleNode(".//DM[@name='Password']");
+                XmlNode? uNode = tblNode.SelectSingleNode(".//DM[@name='Username']");
+                XmlNode? pNode = tblNode.SelectSingleNode(".//DM[@name='Password']");
 
                 // Set data
                 if (uNode != null)
@@ -188,6 +209,47 @@ namespace Ratr
             {
                 File.Delete(file);
             }
+        }
+
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void model_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string value = model.SelectedItem.ToString();
+            switch (value)
+            {
+                case "ZTE (ZXHN H267N)":
+                    this.modelName = "zte-zxhn-h267n";
+                    upload.Enabled = true;
+                    break;
+                case "Huawei (DG8245V-10)":
+                    this.modelName = "huawei-dg8245v-10";
+                    upload.Enabled = true;
+                    break;
+                default:
+                    upload.Enabled = false;
+                    break;
+            }
+        }
+
+        private void noticeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string aboutText = "Ratr v0.2.1 (By Jakiboy).\n\nhttps://github.com/Jakiboy/Ratr";
+            MessageBox.Show(aboutText, "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void howToExportRouterDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var url = new ProcessStartInfo("https://github.com/Jakiboy/Ratr/blob/main/HOW.md")
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(url);
         }
     }
 }
