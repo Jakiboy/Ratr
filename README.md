@@ -6,8 +6,8 @@ Router Config Extractor (GUI).
 
 * Extract **PPP** hidden password to be used in personal router.
 * Security: Avoiding default router from your ISP & Possible malwares in custom firmwares.
-* Bypass **TR069** management parameter.
-* Automated **binary file** decoder (No python scripting required!).
+* Bypass **TR069** management parameters.
+* Automated **config file** decoder (No python scripting required!).
 * Educational purposes (Analyse parameters).
 
 ## Requirements:
@@ -34,8 +34,8 @@ Used to build Ratr:
 **Windows only** (No setup)
 
 * Download from: [Releases](https://github.com/Jakiboy/Ratr/releases).
-* [ZTE config example](./.static/zte.example.bin).
-* [Huawei config example](./.static/huawei.example.xml).
+* [ZTE config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/zte.example.bin).
+* [Huawei config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/huawei.example.xml).
 
 ## Screenshot
 
