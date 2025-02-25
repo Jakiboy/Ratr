@@ -268,16 +268,6 @@ namespace Ratr
             Process.Start(url);
         }
 
-        private void HowClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            var url = new ProcessStartInfo("https://github.com/Jakiboy/Ratr/blob/main/HOW.md")
-            {
-                UseShellExecute = true,
-                Verb = "open"
-            };
-            Process.Start(url);
-        }
-
         private void FormClose(object sender, FormClosedEventArgs e)
         {
             // CLean temp
@@ -315,7 +305,7 @@ namespace Ratr
 
         private void HowToExportMenuItemClick(object sender, EventArgs e)
         {
-            var url = new ProcessStartInfo("https://github.com/Jakiboy/Ratr/blob/main/HOW.md")
+            var url = new ProcessStartInfo("https://github.com/Jakiboy/Ratr/blob/main/How.md")
             {
                 UseShellExecute = true,
                 Verb = "open"
