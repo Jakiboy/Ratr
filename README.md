@@ -33,9 +33,14 @@ Used to build Ratr:
 
 **Windows only** (No setup)
 
-* Download from: [Releases](https://github.com/Jakiboy/Ratr/releases).
-* [ZTE config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/zte.example.bin).
-* [Huawei config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/huawei.example.xml).
+* Download from: [Releases](https://github.com/Jakiboy/Ratr/releases)
+* [ZTE config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/zte.example.bin)
+* [Huawei config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/huawei.example.xml)
+
+## Docs
+
+* [How to export router data ?](https://github.com/Jakiboy/Ratr/blob/main/How.md)
+* [Fix router configuration](https://github.com/Jakiboy/Ratr/blob/main/Config.md)
 
 ## Screenshot
 
