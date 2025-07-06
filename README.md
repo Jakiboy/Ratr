@@ -4,7 +4,7 @@
 
 Router Config Extractor (GUI).  
 
-* Extract **PPP** hidden password to be used in personal router.
+* Extract **PPP** hidden password to be used in personal router (Home gateway).
 * Security: Avoiding default router from your ISP & Possible malwares in custom firmwares.
 * Bypass **TR069** management parameters.
 * Automated **config file** decoder (No python scripting required!).
@@ -20,29 +20,30 @@ Used to build Ratr:
 
 ## Teseted:
 
-* **ZTE ZXHN H267N** ^1.x
-* **Huawei DG8245V-10** ^1.x
+* [Huawei DG8245V-10 ^1.x](https://www.manualslib.com/manual/2439878/Huawei-Dg8245v.html)
+* [ZTE ZXHN H267N ^1.x](https://www.manualslib.com/products/Zte-Zxhn-H267n-6917102.html)
 
 ## Decoders:
 
-* [Ztedecode](https://github.com/Jakiboy/Ztedecode) ([ZTE config utility](https://github.com/mkst/zte-config-utility))
 * [Hwdecode](https://github.com/Jakiboy/Hwdecode) (Huawei)
+* [Ztedecode](https://github.com/Jakiboy/Ztedecode) ([ZTE config utility](https://github.com/mkst/zte-config-utility))
 * [AES encryption](https://pypi.org/project/pycryptodomex/)
 
-## Download
+## Download:
 
 **Windows only** (No setup)
 
 * Download from: [Releases](https://github.com/Jakiboy/Ratr/releases)
-* [ZTE config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/zte.example.bin)
 * [Huawei config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/huawei.example.xml)
+* [ZTE config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/zte.example.bin)
 
-## Docs
+## Docs:
 
-* [How to export router data ?](https://github.com/Jakiboy/Ratr/blob/main/How.md)
-* [Fix router configuration](https://github.com/Jakiboy/Ratr/blob/main/Config.md)
+* [How to export "Huawei DG8245V-10" router data (config)?](./docs/Huawei-DG8245V-10-Export.md)
+* [How to fix "Huawei DG8245V-10" router configuration (DSL)?](./docs/Huawei-DG8245V-10-Config.md)
+* [How to export "ZTE ZXHN H267N" router data (config)?](./docs/ZTE-ZXHN-H267N-Export.md)
 
-## Screenshot
+## Screenshot:
 
 [![screenshot](./.static/screenshot.jpg)](#)
 

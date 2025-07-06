@@ -1,4 +1,4 @@
-# ZTE ZXHN H267N ^1.x
+# Export "ZTE ZXHN H267N" router data (config)
 
 Open your router (ZTE) Admin interface (e.g. at [192.168.1.1](http://192.168.1.1)).  
 
