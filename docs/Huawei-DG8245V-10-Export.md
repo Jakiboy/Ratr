@@ -1,4 +1,4 @@
-# Huawei DG8245V-10 ^1.x
+# Export "Huawei DG8245V-10" router data (config)
 
 Open your router (Huawei) Admin interface (e.g. at [192.168.1.1](http://192.168.1.1)).  
 
