@@ -123,6 +123,12 @@ In the `config.xml`, make the following changes:
 
 ---
 
+### Step 4: Import the Edited Configuration File
+
+Go to http://192.168.1.1/html/ssmp/cfgfile/cfgfile.asp in your browser, upload your edited config.xml file, and click "Update Configuration File" to save the changes.
+
+---
+
 ## Technical Notes
 
 * **DSL Internet remains fully functional**
@@ -143,11 +149,11 @@ If you ever need to go back:
 
 ## Summary
 
-| Feature                  | Before    | After     |
-| ------------------------ | --------- | --------- |
-| TR-069 Remote Management | Enabled   | Disabled  |
-| VOIP Functionality       | Active    | Disabled  |
-| ISP Access               | Full      | Blocked   |
-| DSL Internet             | ✅ Working | ✅ Working |
+| Feature                  | Before      | After       |
+| ------------------------ | ----------- | ----------- |
+| TR-069 Remote Management | Enabled     | Disabled    |
+| VOIP Functionality       | Active      | Disabled    |
+| ISP Access               | Full        | Blocked     |
+| DSL Internet             | ✅ Working | ✅ Working  |
 
 With these modifications, your Huawei DG8245V-10 router is now **secure, stable**, and **under your full control**—**no flashing required**.
