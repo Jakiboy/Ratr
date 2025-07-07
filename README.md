@@ -22,13 +22,15 @@ Used to build Ratr:
 
 * [Huawei DG8245V-10](https://www.manualslib.com/manual/2439878/Huawei-Dg8245v.html)
 * [ZTE ZXHN H267N](https://www.manualslib.com/products/Zte-Zxhn-H267n-6917102.html)
-* Huawei EG8145X6 (In progress)
-* Huawei HG8145X6 (In progress)
-* Huawei EG8145V5 (In progress)
-* Huawei HG8245H (In progress)
-* ZTE ZXHN F660 (In progress)
-* ZTE ZXHN F680 (In progress)
-* ZTE ZXHN F670L (In progress)
+* ZTE ZXHN F660 *(In progress)*
+* ZTE ZXHN F680 *(In progress)*
+* ZTE ZXHN F670L *(In progress)*
+* Huawei HG8245H5 *(In progress)*
+* Huawei EG8145V5 *(In progress)*
+* Huawei HG8145X6 *(In progress)*
+* Huawei EG8145X6 *(In progress)*
+* Nokia G‑240W‑A *(In progress)*
+* Nokia G‑240W‑B *(In progress)*
 
 ## Decoders:
 
