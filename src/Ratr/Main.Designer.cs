@@ -107,7 +107,7 @@
             // model
             // 
             model.DropDownStyle = ComboBoxStyle.DropDownList;
-            model.Items.AddRange(new object[] { "Select Model", "ZTE (ZXHN H267N)", "Huawei (DG8245V-10)" });
+            model.Items.AddRange(new object[] { "Select Model", "Huawei (DG8245V-10)", "ZTE (ZXHN F600W)", "ZTE (ZXHN H108N-2.5)", "ZTE (ZXHN H168N-3.1)", "ZTE (ZXHN H168N-3.5)", "ZTE (ZXHN H188A)", "ZTE (ZXHN H267A)", "ZTE (ZXHN H267N)", "ZTE (ZXHN H268N)", "ZTE (ZXHN H268Q)", "ZTE (ZXHN H288A)", "ZTE (ZXHN H298A)", "ZTE (ZXHN H298N)", "ZTE (ZXHN H298Q)", "ZTE (ZXV10 H201L-2.0)" });
             model.Location = new Point(67, 124);
             model.Name = "model";
             model.Size = new Size(189, 23);
