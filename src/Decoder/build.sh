@@ -31,4 +31,4 @@ sleep 2
 clear
 
 echo -e "${G}All executables have been generated successfully!"
-read -p "Press any key to exit..."
+read -p ""
