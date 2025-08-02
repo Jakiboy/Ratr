@@ -59,10 +59,31 @@ namespace Ratr
                     File.Copy(filePath, configFile, overwrite: true); // Overwrite if file already exists
 
                     // Decode init
-                    string decoder = "decoder/zte.exe";
-                    if (this.modelName == "huawei-dg8245v-10")
+                    string decoder = "";
+                    switch (this.modelName)
                     {
-                        decoder = "decoder/huawei.exe";
+                        case "zte-zxhn-f600w":
+                        case "zte-zxhn-h108n-2-5":
+                        case "zte-zxhn-h168n-3-1":
+                        case "zte-zxhn-h168n-3-5":
+                        case "zte-zxhn-h188a":
+                        case "zte-zxhn-h267a":
+                        case "zte-zxhn-h267n":
+                        case "zte-zxhn-h268n":
+                        case "zte-zxhn-h268q":
+                        case "zte-zxhn-h288a":
+                        case "zte-zxhn-h298a":
+                        case "zte-zxhn-h298n":
+                        case "zte-zxhn-h298q":
+                        case "zte-zxv10-h201l-2-0":
+                            decoder = "decoder/zte.exe";
+                            break;
+                        case "huawei-dg8245v-10":
+                            decoder = "decoder/huawei.exe";
+                            break;
+                        default:
+                            MessageBox.Show("Unsupported model selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                     }
 
                     decoder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, decoder);
@@ -77,13 +98,30 @@ namespace Ratr
                     }
 
                     string args = "";
-                    if (this.modelName == "zte-zxhn-h267n")
+                    switch (this.modelName)
                     {
-                        args = $"/c {decoder} {configFile} {xmlFile} --try-all-known-keys";
-                    }
-                    else if (this.modelName == "huawei-dg8245v-10")
-                    {
-                        args = $"/c {decoder} --file {configFile} --output {xmlFile}";
+                        case "zte-zxhn-f600w":
+                        case "zte-zxhn-h108n-2-5":
+                        case "zte-zxhn-h168n-3-1":
+                        case "zte-zxhn-h168n-3-5":
+                        case "zte-zxhn-h188a":
+                        case "zte-zxhn-h267a":
+                        case "zte-zxhn-h267n":
+                        case "zte-zxhn-h268n":
+                        case "zte-zxhn-h268q":
+                        case "zte-zxhn-h288a":
+                        case "zte-zxhn-h298a":
+                        case "zte-zxhn-h298n":
+                        case "zte-zxhn-h298q":
+                        case "zte-zxv10-h201l-2-0":
+                            args = $"/c {decoder} {configFile} {xmlFile} --try-all-known-keys";
+                            break;
+                        case "huawei-dg8245v-10":
+                            args = $"/c {decoder} --silent --file {configFile} --output {xmlFile}";
+                            break;
+                        default:
+                            MessageBox.Show("Unsupported model selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                     }
 
                     // Decode process
@@ -110,15 +148,57 @@ namespace Ratr
                     }
 
                     // Parse decoded XML file
-                    if (this.modelName == "zte-zxhn-h267n")
+                    switch (this.modelName)
                     {
-                        ParseZteXML(xmlFile);
+                        case "zte-zxhn-f600w":
+                            ParseZteZxhnF600wXml(xmlFile);
+                            break;
+                        case "zte-zxhn-h108n-2-5":
+                            ParseZteZxhnH108n25Xml(xmlFile);
+                            break;
+                        case "zte-zxhn-h168n-3-1":
+                            ParseZteZxhnH108n31Xml(xmlFile);
+                            break;
+                        case "zte-zxhn-h168n-3-5":
+                            ParseZteZxhnH168n35Xml(xmlFile);
+                            break;
+                        case "zte-zxhn-h188a":
+                            ParseZteZxhnH188aXml(xmlFile);
+                            break;
+                        case "zte-zxhn-h267a":
+                            ParseZteZxhnH267aXml(xmlFile);
+                            break;
+                        case "zte-zxhn-h267n":
+                            ParseZteZxhnH267nXml(xmlFile);
+                            break;
+                        case "zte-zxhn-h268n":
+                            ParseZteZxhnH268nXml(xmlFile);
+                            break;
+                        case "zte-zxhn-h268q":
+                            ParseZteZxhnH268qXml(xmlFile);
+                            break;
+                        case "zte-zxhn-h288a":
+                            ParseZteZxhnH288aXml(xmlFile);
+                            break;
+                        case "zte-zxhn-h298a":
+                            ParseZteZxhnH298aXml(xmlFile);
+                            break;
+                        case "zte-zxhn-h298n":
+                            ParseZteZxhnH298nXml(xmlFile);
+                            break;
+                        case "zte-zxhn-h298q":
+                            ParseZteZxhnH298qXml(xmlFile);
+                            break;
+                        case "zte-zxv10-h201l-2-0":
+                            ParseZteZxv10H201l20Xml(xmlFile);
+                            break;
+                        case "huawei-dg8245v-10":
+                            ParseHuaweiDg8245v10Xml(xmlFile);
+                            break;
+                        default:
+                            MessageBox.Show("Unsupported model selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                     }
-                    else if (this.modelName == "huawei-dg8245v-10")
-                    {
-                        ParseHuaweiXML(xmlFile);
-                    }
-                    
                 }
                 catch (Exception ex)
                 {
@@ -134,7 +214,7 @@ namespace Ratr
             }
         }
 
-        private void ParseZteXML(string xmlFile)
+        private void ParseZteZxhnH267aXml(string xmlFile)
         {
             try
             {
@@ -153,32 +233,69 @@ namespace Ratr
                 XmlNode? tblNode = dbNode.SelectSingleNode("//Tbl[@name='PPPIF']");
                 if (tblNode == null)
                 {
-                    MessageBox.Show("The 'PPPIF' table was not found in the XML file.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("The 'PPP' configuration was not found.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                XmlNode? uNode = tblNode.SelectSingleNode(".//DM[@name='Username']");
-                XmlNode? pNode = tblNode.SelectSingleNode(".//DM[@name='Password']");
+                string? usernameValue = null;
+                string? passwordValue = null;
+
+                // Get all rows from the PPPIF table
+                XmlNodeList? rows = tblNode.SelectNodes(".//Row");
+                if (rows == null || rows.Count == 0)
+                {
+                    MessageBox.Show("No rows found in the PPPIF table.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Iterate through rows to find non-empty username and password
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    XmlNode? uNode = rows[i]?.SelectSingleNode("./DM[@name='Username']");
+                    XmlNode? pNode = rows[i]?.SelectSingleNode("./DM[@name='Password']");
+
+                    string? tempUsername = uNode?.Attributes?["val"]?.Value;
+                    string? tempPassword = pNode?.Attributes?["val"]?.Value;
+
+                    // If we found both username and password that are not empty, use them
+                    if (!string.IsNullOrEmpty(tempUsername) && !string.IsNullOrEmpty(tempPassword))
+                    {
+                        usernameValue = tempUsername;
+                        passwordValue = tempPassword;
+                        break; // Found valid credentials, stop searching
+                    }
+
+                    // If we only found username or password (but not both), keep them as fallback
+                    if (string.IsNullOrEmpty(usernameValue) && !string.IsNullOrEmpty(tempUsername))
+                    {
+                        usernameValue = tempUsername;
+                    }
+
+                    if (string.IsNullOrEmpty(passwordValue) && !string.IsNullOrEmpty(tempPassword))
+                    {
+                        passwordValue = tempPassword;
+                    }
+                }
 
                 // Set data
-                if (uNode != null)
+                if (!string.IsNullOrEmpty(usernameValue))
                 {
-                    this.username.Text = uNode.Attributes?["val"]?.Value ?? "Undefined";
+                    this.username.Text = usernameValue;
                     this.username.Enabled = true;
                 }
                 else
                 {
-                    this.username.Text = "Error!";
+                    this.username.Text = "Empty!";
                 }
 
-                if (pNode != null)
+                if (!string.IsNullOrEmpty(passwordValue))
                 {
-                    this.password.Text = pNode.Attributes?["val"]?.Value ?? "Undefined";
+                    this.password.Text = passwordValue;
                     this.password.Enabled = true;
                 }
                 else
                 {
-                    this.password.Text = "Error!";
+                    this.password.Text = "Empty!";
                 }
             }
             catch (System.IO.FileNotFoundException)
@@ -195,7 +312,177 @@ namespace Ratr
             }
         }
 
-        private void ParseHuaweiXML(string xmlFile)
+        private void ParseZteZxhnH188aXml(string xmlFile)
+        {
+            // Same parsing logic as for ZTE ZXHN H267A
+            ParseZteZxhnH267aXml(xmlFile);
+        }
+
+        private void ParseZteZxhnH267nXml(string xmlFile)
+        {
+            // Same parsing logic as for ZTE ZXHN H267A
+            ParseZteZxhnH267aXml(xmlFile);
+        }
+
+        private void ParseZteZxhnH268nXml(string xmlFile)
+        {
+            // Same parsing logic as for ZTE ZXHN F600W
+            ParseZteZxhnF600wXml(xmlFile);
+        }
+
+        private void ParseZteZxhnH268qXml(string xmlFile)
+        {
+            // Same parsing logic as for ZTE ZXHN F600W
+            ParseZteZxhnF600wXml(xmlFile);
+        }
+
+        private void ParseZteZxhnH288aXml(string xmlFile)
+        {
+            // Same parsing logic as for ZTE ZXHN F600W
+            ParseZteZxhnF600wXml(xmlFile);
+        }
+
+        private void ParseZteZxhnH298aXml(string xmlFile)
+        {
+            // Same parsing logic as for ZTE ZXHN F600W
+            ParseZteZxhnF600wXml(xmlFile);
+        }
+
+        private void ParseZteZxhnH298nXml(string xmlFile)
+        {
+            // Same parsing logic as for ZTE ZXHN F600W
+            ParseZteZxhnF600wXml(xmlFile);
+        }
+
+        private void ParseZteZxhnH298qXml(string xmlFile)
+        {
+            // Same parsing logic as for ZTE ZXHN F600W
+            ParseZteZxhnF600wXml(xmlFile);
+        }
+
+        private void ParseZteZxv10H201l20Xml(string xmlFile)
+        {
+            // Same parsing logic as for ZTE ZXHN F600W
+            ParseZteZxhnF600wXml(xmlFile);
+        }
+
+        private void ParseZteZxhnF600wXml(string xmlFile)
+        {
+            try
+            {
+                // Get file
+                XmlDocument xmlDoc = new();
+                xmlDoc.Load(xmlFile);
+
+                // Get nodes
+                XmlNode? dbNode = xmlDoc.SelectSingleNode("//DB");
+                if (dbNode == null)
+                {
+                    MessageBox.Show("The XML file does not contain a valid 'DB' node.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                XmlNode? tblNode = dbNode.SelectSingleNode("//Tbl[@name='WANCPPP']");
+                if (tblNode == null)
+                {
+                    MessageBox.Show("The 'PPP' configuration was not found.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string? usernameValue = null;
+                string? passwordValue = null;
+
+                // Get all rows from the WANCPPP table
+                XmlNodeList? rows = tblNode.SelectNodes(".//Row");
+                if (rows == null || rows.Count == 0)
+                {
+                    MessageBox.Show("No rows found in the WANCPPP table.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Iterate through rows to find non-empty username and password
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    XmlNode? uNode = rows[i]?.SelectSingleNode("./DM[@name='UserName']");
+                    XmlNode? pNode = rows[i]?.SelectSingleNode("./DM[@name='Password']");
+
+                    string? tempUsername = uNode?.Attributes?["val"]?.Value;
+                    string? tempPassword = pNode?.Attributes?["val"]?.Value;
+
+                    // If we found both username and password that are not empty, use them
+                    if (!string.IsNullOrEmpty(tempUsername) && !string.IsNullOrEmpty(tempPassword))
+                    {
+                        usernameValue = tempUsername;
+                        passwordValue = tempPassword;
+                        break; // Found valid credentials, stop searching
+                    }
+
+                    // If we only found username or password (but not both), keep them as fallback
+                    if (string.IsNullOrEmpty(usernameValue) && !string.IsNullOrEmpty(tempUsername))
+                    {
+                        usernameValue = tempUsername;
+                    }
+
+                    if (string.IsNullOrEmpty(passwordValue) && !string.IsNullOrEmpty(tempPassword))
+                    {
+                        passwordValue = tempPassword;
+                    }
+                }
+
+                // Set data
+                if (!string.IsNullOrEmpty(usernameValue))
+                {
+                    this.username.Text = usernameValue;
+                    this.username.Enabled = true;
+                }
+                else
+                {
+                    this.username.Text = "Empty!";
+                }
+
+                if (!string.IsNullOrEmpty(passwordValue))
+                {
+                    this.password.Text = passwordValue;
+                    this.password.Enabled = true;
+                }
+                else
+                {
+                    this.password.Text = "Empty!";
+                }
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                MessageBox.Show("The specified XML file was not found. Please check the file path and try again.", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Xml.XmlException)
+            {
+                MessageBox.Show("The XML file is not valid or is corrupted. Please check the file and try again.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ParseZteZxhnH108n25Xml(string xmlFile)
+        {
+            // Same parsing logic as for ZTE ZXHN F600W
+            ParseZteZxhnF600wXml(xmlFile);
+        }
+
+        private void ParseZteZxhnH108n31Xml(string xmlFile)
+        {
+            // Same parsing logic as for ZTE ZXHN F600W
+            ParseZteZxhnF600wXml(xmlFile);
+        }
+
+        private void ParseZteZxhnH168n35Xml(string xmlFile)
+        {
+            // Same parsing logic as for ZTE ZXHN H267A
+            ParseZteZxhnH267aXml(xmlFile);
+        }
+
+        private void ParseHuaweiDg8245v10Xml(string xmlFile)
         {
             try
             {
@@ -203,45 +490,67 @@ namespace Ratr
                 XmlDocument xmlDoc = new();
                 xmlDoc.Load(xmlFile);
 
-                // Navigate to the first <LineInstance> node
-                XmlNode? lineInstanceNode = xmlDoc.SelectSingleNode("//LineInstance");
-                if (lineInstanceNode == null)
+                // Get all WANPPPConnectionInstance nodes (PPP internet connections)
+                XmlNodeList? pppConnectionNodes = xmlDoc.SelectNodes("//WANPPPConnectionInstance");
+                if (pppConnectionNodes == null || pppConnectionNodes.Count == 0)
                 {
-                    MessageBox.Show("The XML file does not contain a valid 'LineInstance' node.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("The 'PPP' configuration was not found", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Navigate to the <SIP> node within the <LineInstance>
-                XmlNode? sipNode = lineInstanceNode.SelectSingleNode(".//SIP");
-                if (sipNode == null)
-                {
-                    MessageBox.Show("The 'SIP' node was not found in the XML file.", "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                string? usernameValue = null;
+                string? passwordValue = null;
 
-                // Extract AuthUserName and AuthPassword
-                XmlNode? authUserNameNode = sipNode.SelectSingleNode(".//@AuthUserName");
-                XmlNode? authPasswordNode = sipNode.SelectSingleNode(".//@AuthPassword");
+                // Iterate through all WANPPPConnectionInstance nodes to find non-empty credentials
+                for (int i = 0; i < pppConnectionNodes.Count; i++)
+                {
+                    XmlNode? pppConnection = pppConnectionNodes[i];
+
+                    if (pppConnection != null)
+                    {
+                        string? tempUsername = pppConnection.Attributes?["Username"]?.Value;
+                        string? tempPassword = pppConnection.Attributes?["Password"]?.Value;
+
+                        // If we found both username and password that are not empty, use them
+                        if (!string.IsNullOrEmpty(tempUsername) && !string.IsNullOrEmpty(tempPassword))
+                        {
+                            usernameValue = tempUsername;
+                            passwordValue = tempPassword;
+                            break; // Found valid credentials, stop searching
+                        }
+
+                        // If we only found username or password (but not both), keep them as fallback
+                        if (string.IsNullOrEmpty(usernameValue) && !string.IsNullOrEmpty(tempUsername))
+                        {
+                            usernameValue = tempUsername;
+                        }
+
+                        if (string.IsNullOrEmpty(passwordValue) && !string.IsNullOrEmpty(tempPassword))
+                        {
+                            passwordValue = tempPassword;
+                        }
+                    }
+                }
 
                 // Set data
-                if (authUserNameNode != null)
+                if (!string.IsNullOrEmpty(usernameValue))
                 {
-                    this.username.Text = authUserNameNode.Value;
+                    this.username.Text = usernameValue;
                     this.username.Enabled = true;
                 }
                 else
                 {
-                    this.username.Text = "Error!";
+                    this.username.Text = "Empty!";
                 }
 
-                if (authPasswordNode != null)
+                if (!string.IsNullOrEmpty(passwordValue))
                 {
-                    this.password.Text = authPasswordNode.Value;
+                    this.password.Text = passwordValue;
                     this.password.Enabled = true;
                 }
                 else
                 {
-                    this.password.Text = "Error!";
+                    this.password.Text = "Empty!";
                 }
             }
             catch (System.IO.FileNotFoundException)
@@ -284,12 +593,64 @@ namespace Ratr
             ResetForm();
             switch (value)
             {
+                case "Huawei (DG8245V-10)":
+                    this.modelName = "huawei-dg8245v-10";
+                    upload.Enabled = true;
+                    break;
+                case "ZTE (ZXHN F600W)":
+                    this.modelName = "zte-zxhn-f600w";
+                    upload.Enabled = true;
+                    break;
+                case "ZTE (ZXHN H108N-2.5)":
+                    this.modelName = "zte-zxhn-h108n-2-5";
+                    upload.Enabled = true;
+                    break;
+                case "ZTE (ZXHN H168N-3.1)":
+                    this.modelName = "zte-zxhn-h168n-3-1";
+                    upload.Enabled = true;
+                    break;
+                case "ZTE (ZXHN H168N-3.5)":
+                    this.modelName = "zte-zxhn-h168n-3-5";
+                    upload.Enabled = true;
+                    break;
+                case "ZTE (ZXHN H188A)":
+                    this.modelName = "zte-zxhn-h188a";
+                    upload.Enabled = true;
+                    break;
+                case "ZTE (ZXHN H267A)":
+                    this.modelName = "zte-zxhn-h267a";
+                    upload.Enabled = true;
+                    break;
                 case "ZTE (ZXHN H267N)":
                     this.modelName = "zte-zxhn-h267n";
                     upload.Enabled = true;
                     break;
-                case "Huawei (DG8245V-10)":
-                    this.modelName = "huawei-dg8245v-10";
+                case "ZTE (ZXHN H268N)":
+                    this.modelName = "zte-zxhn-h268n";
+                    upload.Enabled = true;
+                    break;
+                case "ZTE (ZXHN H268Q)":
+                    this.modelName = "zte-zxhn-h268q";
+                    upload.Enabled = true;
+                    break;
+                case "ZTE (ZXHN H288A)":
+                    this.modelName = "zte-zxhn-h288a";
+                    upload.Enabled = true;
+                    break;
+                case "ZTE (ZXHN H298A)":
+                    this.modelName = "zte-zxhn-h298a";
+                    upload.Enabled = true;
+                    break;
+                case "ZTE (ZXHN H298N)":
+                    this.modelName = "zte-zxhn-h298n";
+                    upload.Enabled = true;
+                    break;
+                case "ZTE (ZXHN H298Q)":
+                    this.modelName = "zte-zxhn-h298q";
+                    upload.Enabled = true;
+                    break;
+                case "ZTE (ZXV10 H201L-2.0)":
+                    this.modelName = "zte-zxv10-h201l-2-0";
                     upload.Enabled = true;
                     break;
                 default:
@@ -299,7 +660,7 @@ namespace Ratr
 
         private void AboutMenuItemClick(object sender, EventArgs e)
         {
-            string aboutText = "Ratr v0.2.0 (By Jakiboy).\n\nhttps://github.com/Jakiboy/Ratr";
+            string aboutText = "Ratr v0.3.0 (By Jakiboy).\n\nhttps://github.com/Jakiboy/Ratr";
             MessageBox.Show(aboutText, "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

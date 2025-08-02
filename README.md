@@ -5,7 +5,7 @@
 Router Config Extractor (GUI).  
 
 * Extract **PPP** hidden password to be used in personal router (Home gateway).
-* Security: Avoiding default router from your ISP & Possible malwares in custom firmwares.
+* Security: Avoiding default router from your ISP or Possible malwares in custom firmwares.
 * Bypass **TR069** management parameters.
 * Automated **config file** decoder (No python scripting required!).
 * Educational purposes (Analyse parameters).
@@ -13,24 +13,14 @@ Router Config Extractor (GUI).
 ## Requirements:
 
 * [**.NET Desktop Runtime**](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.23-windows-x64-installer) ^6.x
-
-Used to build Ratr:
-
-* **Visual Studio 2022** ^17.x
+* [**Git for Windows**](https://git-scm.com/downloads/win)
+* **Visual Studio 2022** ^17.x (Used to build Ratr)
 
 ## Teseted:
 
 * [Huawei DG8245V-10](https://www.manualslib.com/manual/2439878/Huawei-Dg8245v.html)
 * [ZTE ZXHN H267N](https://www.manualslib.com/products/Zte-Zxhn-H267n-6917102.html)
-* ZTE ZXHN F660 *(In progress)*
-* ZTE ZXHN F680 *(In progress)*
-* ZTE ZXHN F670L *(In progress)*
-* Huawei HG8245H5 *(In progress)*
-* Huawei EG8145V5 *(In progress)*
-* Huawei HG8145X6 *(In progress)*
-* Huawei EG8145X6 *(In progress)*
-* Nokia G‑240W‑A *(In progress)*
-* Nokia G‑240W‑B *(In progress)*
+* [See more...](./Compatibility.md)
 
 ## Decoders:
 
@@ -40,11 +30,15 @@ Used to build Ratr:
 
 ## Download:
 
-**Windows only** (No setup)
+**Windows binary** (No setup)
 
-* Download from: [Releases](https://github.com/Jakiboy/Ratr/releases)
-* [Huawei config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/huawei.example.xml)
-* [ZTE config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/zte.example.bin)
+* [Releases](https://github.com/Jakiboy/Ratr/releases)
+
+**Routers config examples**
+
+* [Huawei DG8245V-10 config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/Huawei-DG8245V-10.example.xml)
+* [ZTE ZXHN H267N config example](https://github.com/Jakiboy/Ratr/raw/refs/heads/main/.static/ZTE-ZXHN-H267N.example.bin)
+* [See more...](./.static)
 
 ## Docs:
 
