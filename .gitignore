@@ -2,6 +2,7 @@ bin/
 obj/
 Debug/
 Release/
+dist/
 *.user
 *.suo
 *.userosscache
