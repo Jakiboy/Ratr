@@ -12,7 +12,8 @@ clear
 echo -e "${G}Generating zte.exe from source..."
 git clone https://github.com/Jakiboy/Ztedecode.git zte
 pip install ./zte
-python -m PyInstaller --onefile --noconsole --icon=router.ico ./zte/decode.py
+python -m PyInstaller --onefile --noconsole --icon=router.ico ./zte/Ztedecode.py
+mv ./dist/Ztedecode.exe ./zte.exe
 mv ./dist/decode.exe ./zte.exe
 rm -f *.spec
 rm -rf build dist zte
