@@ -13,7 +13,7 @@ Router Config Extractor (GUI).
 ## Requirements:
 
 * [**.NET Desktop Runtime**](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.23-windows-x64-installer) ^6.x (Used in Runtime)
-* [**Git for Windows**](https://git-scm.com/downloads/win) (Used to generate encoders)
+* [**Git for Windows**](https://git-scm.com/downloads/win) (Used to generate decoders)
 * **Visual Studio 2022** ^17.x (Used to build Ratr)
 
 ## Teseted:
