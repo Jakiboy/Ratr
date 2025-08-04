@@ -54,4 +54,4 @@ Router Config Extractor (GUI).
 ---
 
 > [!CAUTION]
-> Decoders have been flagged as a potential threat by your antivirus software. This is a false positive, and the files are safe to use. You can build them from the source.
+> Decoders have been flagged as a potential threat by antivirus software (Microsoft Defender). The files are safe to use. You may also build them from the source if preferred.
