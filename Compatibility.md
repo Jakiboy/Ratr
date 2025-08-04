@@ -1,28 +1,28 @@
-* ✅ Huawei DG8245V-10 (V1.0)
-* ✅ Huawei EG8240H5 (V1.0)
-* ✅ ZTE ZXHN F600W
-* ✅ ZTE ZXHN H108N (V2.5)
-* ✅ ZTE ZXHN H168N (V2.2)
-* ✅ ZTE ZXHN H168N (V3.5)
-* ✅ ZTE ZXHN H188A
-* ✅ ZTE ZXHN H267A
-* ✅ ZTE ZXHN H267N
-* ✅ ZTE ZXHN H268N
-* ✅ ZTE ZXHN H268Q
-* ✅ ZTE ZXHN H288A
-* ✅ ZTE ZXHN H298A
-* ✅ ZTE ZXHN H298N
-* ✅ ZTE ZXHN H298Q
-* ✅ ZTE ZXV10 H201L (V2.0)
+- ✅ Huawei DG8245V-10 (V1.0)
+- ✅ Huawei EG8240H5 (V1.0)
+- ✅ ZTE ZXHN F600W
+- ✅ ZTE ZXHN H108N (V2.5)
+- ✅ ZTE ZXHN H168N (V2.2)
+- ✅ ZTE ZXHN H168N (V3.5)
+- ✅ ZTE ZXHN H188A
+- ✅ ZTE ZXHN H267A
+- ✅ ZTE ZXHN H267N
+- ✅ ZTE ZXHN H268N
+- ✅ ZTE ZXHN H268Q
+- ✅ ZTE ZXHN H288A
+- ✅ ZTE ZXHN H298A
+- ✅ ZTE ZXHN H298N
+- ✅ ZTE ZXHN H298Q
+- ✅ ZTE ZXV10 H201L (V2.0)
 
-* ⌛ D-Link DSL-124 *(In progress)*
-* ⌛ D-Link DSL-245GE *(In progress)*
-* ⌛ Huawei EG8145V5 *(In progress)*
-* ⌛ Huawei EG8145X6 *(In progress)*
-* ⌛ Huawei HG8145X6 *(In progress)*
-* ⌛ Huawei HG8245H5 *(In progress)*
-* ⌛ Nokia G‑240W‑A *(In progress)*
-* ⌛ Nokia G‑240W‑B *(In progress)*
-* ⌛ ZTE ZXHN F660 *(In progress)*
-* ⌛ ZTE ZXHN F670L *(In progress)*
-* ⌛ ZTE ZXHN F680 *(In progress)*
+- ⌛ D-Link DSL-124 _(In progress)_
+- ⌛ D-Link DSL-245GE _(In progress)_
+- ⌛ Huawei EG8145V5 _(In progress)_
+- ⌛ Huawei EG8145X6 _(In progress)_
+- ⌛ Huawei HG8145X6 _(In progress)_
+- ⌛ Huawei HG8245H5 _(In progress)_
+- ⌛ Nokia G‑240W‑A _(In progress)_
+- ⌛ Nokia G‑240W‑B _(In progress)_
+- ⌛ ZTE ZXHN F660 _(In progress)_
+- ⌛ ZTE ZXHN F670L _(In progress)_
+- ⌛ ZTE ZXHN F680 _(In progress)_
