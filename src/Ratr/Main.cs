@@ -8,6 +8,7 @@ namespace Ratr
         private readonly string tempFolder;
         private readonly string guid;
         private string modelName;
+        private string lastDecodedXmlFile;
 
         public Main()
         {
@@ -16,6 +17,14 @@ namespace Ratr
             this.tempFolder = Path.GetTempPath();
             this.guid = Guid.NewGuid().ToString() + "-";
             this.modelName = "";
+            this.lastDecodedXmlFile = "";
+
+            // Ensure decoder folder exists
+            string decoderFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "decoder");
+            if (!Directory.Exists(decoderFolder))
+            {
+                Directory.CreateDirectory(decoderFolder);
+            }
         }
 
         private void FormLoad(object sender, EventArgs e)
@@ -42,7 +51,7 @@ namespace Ratr
                 {
                     // Disable upload button and update text
                     this.upload.Enabled = false;
-                    this.upload.Text = "Decoding...";
+                    this.upload.Text = "📁 Decoding...";
 
                     // Upload
                     string filePath = openFileDialog.FileName;
@@ -88,6 +97,7 @@ namespace Ratr
 
                     decoder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, decoder);
                     string xmlFile = Path.Combine(tempFolder, guid + "config.xml");
+                    this.lastDecodedXmlFile = xmlFile; // Store the XML file path
                     decoder = Path.GetFullPath(decoder);
 
                     // Check if the decoder executable exists
@@ -199,6 +209,9 @@ namespace Ratr
                             MessageBox.Show("Unsupported model selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                     }
+
+                    // Enable the open decoded file link after successful parsing
+                    UpdateOpenDecodedFileLinkStatus();
                 }
                 catch (Exception ex)
                 {
@@ -209,7 +222,7 @@ namespace Ratr
                 {
                     // Re-enable the upload button and reset its text
                     this.upload.Enabled = true;
-                    this.upload.Text = "Choose file";
+                    this.upload.Text = "📁 Select encoded file";
                 }
             }
         }
@@ -449,6 +462,9 @@ namespace Ratr
                 {
                     this.password.Text = "Empty!";
                 }
+
+                // Update the open decoded file link status
+                UpdateOpenDecodedFileLinkStatus();
             }
             catch (System.IO.FileNotFoundException)
             {
@@ -660,7 +676,7 @@ namespace Ratr
 
         private void AboutMenuItemClick(object sender, EventArgs e)
         {
-            string aboutText = "Ratr v0.3.0 (By Jakiboy).\n\nhttps://github.com/Jakiboy/Ratr";
+            string aboutText = "Ratr v0.4.0 (By Jakiboy).\n\nhttps://github.com/Jakiboy/Ratr";
             MessageBox.Show(aboutText, "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -674,10 +690,67 @@ namespace Ratr
             Process.Start(url);
         }
 
+        private void DownloadDecodersMenuItemClick(object sender, EventArgs e)
+        {
+            var url = new ProcessStartInfo("https://github.com/Jakiboy/Ratr/releases")
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(url);
+        }
+
         private void ResetForm()
         {
             this.upload.Enabled = this.username.Enabled = this.password.Enabled = false;
             this.username.Text = this.password.Text = "";
+            this.openFile.Enabled = false;
+        }
+
+        private void UpdateOpenDecodedFileLinkStatus()
+        {
+            // Enable the button after successful decoding (regardless of username/password content)
+            bool shouldEnable = !string.IsNullOrEmpty(this.lastDecodedXmlFile) && File.Exists(this.lastDecodedXmlFile);
+
+            this.openFile.Enabled = shouldEnable;
+
+            // Update button appearance based on enabled state
+            if (shouldEnable)
+            {
+                // When enabled: normal colors
+                this.openFile.ForeColor = Color.Black;
+                this.openFile.FlatAppearance.BorderColor = Color.FromArgb(133, 133, 133); // Standard button border
+            }
+            else
+            {
+                // When disabled: very light gray colors (lighter than LightGray)
+                this.openFile.ForeColor = Color.FromArgb(220, 220, 220);
+                this.openFile.FlatAppearance.BorderColor = Color.FromArgb(220, 220, 220);
+            }
+        }
+
+        private void OpenDecodedFileButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(this.lastDecodedXmlFile) && File.Exists(this.lastDecodedXmlFile))
+                {
+                    var processInfo = new ProcessStartInfo(this.lastDecodedXmlFile)
+                    {
+                        UseShellExecute = true,
+                        Verb = "open"
+                    };
+                    Process.Start(processInfo);
+                }
+                else
+                {
+                    MessageBox.Show("No decoded file found or file has been deleted.", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to open the decoded file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

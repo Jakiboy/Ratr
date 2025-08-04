@@ -1,6 +1,6 @@
 # Create distribution ZIP files for Ratr release
 param(
-    [string]$Version = "0.3.0"
+    [string]$Version = "0.4.0"
 )
 
 Write-Host "Creating distribution packages for Ratr v$Version..." -ForegroundColor Green
@@ -31,18 +31,19 @@ function Create-ZipFile {
 
 # Create ZIP packages
 if (Test-Path "$ReleasePath\Ratr") {
-    $ZipName = "$DistPath\Ratr-v$Version-SelfContained.zip"
+    $ZipName = "$DistPath\Ratr.zip"
     Create-ZipFile -SourcePath "$ReleasePath\Ratr\*" -DestinationPath $ZipName
 }
 
-if (Test-Path "$ReleasePath\Ratr-Portable") {
-    $ZipName = "$DistPath\Ratr-v$Version-Portable.zip"
-    Create-ZipFile -SourcePath "$ReleasePath\Ratr-Portable\*" -DestinationPath $ZipName
+if (Test-Path "$ReleasePath\Ratr-Standalone") {
+    $ZipName = "$DistPath\Ratr-Standalone.zip"
+    Create-ZipFile -SourcePath "$ReleasePath\Ratr-Standalone\*" -DestinationPath $ZipName
 }
 
-# Create complete release package
-$CompleteZipName = "$DistPath\Ratr-v$Version-Complete.zip"
-Create-ZipFile -SourcePath "$ReleasePath\*" -DestinationPath $CompleteZipName
+if (Test-Path "$ReleasePath\Ratr-Without-Decoders") {
+    $ZipName = "$DistPath\Ratr-Without-Decoders.zip"
+    Create-ZipFile -SourcePath "$ReleasePath\Ratr-Without-Decoders\*" -DestinationPath $ZipName
+}
 
 # Create checksums
 if (Test-Path $DistPath) {

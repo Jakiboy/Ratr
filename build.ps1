@@ -28,7 +28,7 @@ if ($LASTEXITCODE -ne 0) {
 
 # Publish the application (self-contained)
 Write-Host "Publishing self-contained application..." -ForegroundColor Yellow
-dotnet publish $ProjectPath --configuration Release --output "$OutputPath\Ratr" --self-contained true --runtime win-x64 --verbosity minimal
+dotnet publish $ProjectPath --configuration Release --output "$OutputPath\Ratr-Standalone" --self-contained true --runtime win-x64 --verbosity minimal
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Publish failed!" -ForegroundColor Red
@@ -38,7 +38,7 @@ if ($LASTEXITCODE -ne 0) {
 # Copy decoder executables
 Write-Host "Copying decoder executables..." -ForegroundColor Yellow
 if (Test-Path $DecoderSourcePath) {
-    $DecoderDestPath = "$OutputPath\Ratr\decoder"
+    $DecoderDestPath = "$OutputPath\Ratr-Standalone\decoder"
     New-Item -Path $DecoderDestPath -ItemType Directory -Force | Out-Null
     Copy-Item -Path "$DecoderSourcePath\*" -Destination $DecoderDestPath -Force
     Write-Host "Decoder executables copied successfully." -ForegroundColor Green
@@ -49,45 +49,55 @@ if (Test-Path $DecoderSourcePath) {
 
 # Create a portable version (framework-dependent)
 Write-Host "Creating portable version..." -ForegroundColor Yellow
-dotnet publish $ProjectPath --configuration Release --output "$OutputPath\Ratr-Portable" --self-contained false --runtime win-x64 --verbosity minimal
+dotnet publish $ProjectPath --configuration Release --output "$OutputPath\Ratr" --self-contained false --runtime win-x64 --verbosity minimal
 
 # Copy decoder executables to portable version
 if (Test-Path $DecoderSourcePath) {
-    $DecoderDestPathPortable = "$OutputPath\Ratr-Portable\decoder"
+    $DecoderDestPathPortable = "$OutputPath\Ratr\decoder"
     New-Item -Path $DecoderDestPathPortable -ItemType Directory -Force | Out-Null
     Copy-Item -Path "$DecoderSourcePath\*" -Destination $DecoderDestPathPortable -Force
 }
 
+# Create a version without decoders (framework-dependent)
+Write-Host "Creating version without decoders..." -ForegroundColor Yellow
+dotnet publish $ProjectPath --configuration Release --output "$OutputPath\Ratr-Without-Decoders" --self-contained false --runtime win-x64 --verbosity minimal
+
 # Create README for release
 $ReadmeContent = @"
-# Ratr v0.3.0 Release
+# Ratr v0.4.0 Release
 
 ## Contents
 
-### Ratr (Self-contained)
-- Complete standalone version that doesn't require .NET runtime
-- Larger file size but runs on any Windows system
+### Ratr (Framework-dependent with decoders)
+- Requires .NET 6.0 Desktop Runtime to be installed
+- Smaller file size, includes decoder executables
 - Located in: Ratr\
 
-### Ratr-Portable (Framework-dependent)
+### Ratr-Standalone (Self-contained with decoders)
+- Complete standalone version that doesn't require .NET runtime
+- Larger file size but runs on any Windows system
+- Includes decoder executables
+- Located in: Ratr-Standalone\
+
+### Ratr-Without-Decoders (Framework-dependent without decoders)
 - Requires .NET 6.0 Desktop Runtime to be installed
-- Smaller file size
-- Located in: Ratr-Portable\
+- Smallest file size, no decoder executables included
+- Located in: Ratr-Without-Decoders\
 
 ## Installation
 
-### Self-contained version:
-1. Extract the Ratr folder
-2. Run Ratr.exe
-
-### Portable version:
+### Framework-dependent versions (Ratr / Ratr-Without-Decoders):
 1. Install .NET 6.0 Desktop Runtime from: https://dotnet.microsoft.com/download/dotnet/6.0
-2. Extract the Ratr-Portable folder
+2. Extract the respective folder
 3. Run Ratr.exe
+
+### Self-contained version (Ratr-Standalone):
+1. Extract the Ratr-Standalone folder
+2. Run Ratr.exe
 
 ## Usage
 1. Select your router model from the dropdown
-2. Click "Choose file" to select your router configuration file
+2. Click "Select encoded file" to select your router configuration file
 3. The application will decode and display the PPP credentials
 
 ## Supported Models
@@ -114,7 +124,7 @@ Set-Content -Path "$OutputPath\README.txt" -Value $ReadmeContent -Encoding UTF8
 
 # Create version info
 $VersionInfo = @"
-Ratr v0.3.0
+Ratr v0.4.0
 Build Date: $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
 Target Framework: .NET 6.0 Windows
 Author: Jakiboy
@@ -128,7 +138,8 @@ Write-Host "Release build completed successfully!" -ForegroundColor Green
 Write-Host "Output location: $OutputPath" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Contents:" -ForegroundColor Yellow
-Write-Host "- Ratr\ (Self-contained version)" -ForegroundColor White
-Write-Host "- Ratr-Portable\ (Framework-dependent version)" -ForegroundColor White
+Write-Host "- Ratr\ (Framework-dependent version with decoders)" -ForegroundColor White
+Write-Host "- Ratr-Standalone\ (Self-contained version with decoders)" -ForegroundColor White
+Write-Host "- Ratr-Without-Decoders\ (Framework-dependent version without decoders)" -ForegroundColor White
 Write-Host "- README.txt (Installation and usage instructions)" -ForegroundColor White
 Write-Host "- VERSION.txt (Build information)" -ForegroundColor White
