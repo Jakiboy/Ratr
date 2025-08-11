@@ -15,4 +15,4 @@ $('[style="display:none"]').removeAttr('style');
 
 ## Screenshot
 
-[![how](./../.static/Huawei-DG8245V-10.jpg)](#)
+[![how](./../assets/Huawei-DG8245V-10.jpg)](#)

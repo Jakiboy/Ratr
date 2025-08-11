@@ -1,6 +1,6 @@
 # Ratr
 
-[![Ratr](./.static/icon.svg)](#)
+[![Ratr](./assets/icon.svg)](#)
 
 Router Config Extractor (GUI).
 
@@ -49,7 +49,7 @@ Router Config Extractor (GUI).
 
 ## Screenshot:
 
-[![screenshot](./.static/screenshot.jpg)](#)
+[![screenshot](./assets/screenshot.jpg)](#)
 
 ---
 
