@@ -11,6 +11,10 @@ Router Config Extractor (GUI).
 - Automated **config file** decoder (No python scripting required!).
 - Educational purposes (Analyse parameters).
 
+## Screenshot:
+
+[![screenshot](./assets/screenshot.jpg)](#)
+
 ## Requirements:
 
 - [**.NET Desktop Runtime**](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.23-windows-x64-installer) ^6.x (Used in Runtime)
@@ -46,10 +50,6 @@ Router Config Extractor (GUI).
 - [How to export "Huawei DG8245V-10" router data (config)?](./docs/Huawei-DG8245V-10-Export.md)
 - [How to fix "Huawei DG8245V-10" router configuration (DSL)?](./docs/Huawei-DG8245V-10-Config.md)
 - [How to export "ZTE ZXHN H267N" router data (config)?](./docs/ZTE-ZXHN-H267N-Export.md)
-
-## Screenshot:
-
-[![screenshot](./assets/screenshot.jpg)](#)
 
 ---
 
