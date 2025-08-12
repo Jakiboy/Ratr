@@ -16,13 +16,14 @@
 - ✅ ZTE ZXV10 H201L (V2.0)
 
 - ⌛ D-Link DSL-124 _(In progress)_
-- ⌛ D-Link DSL-245GE _(In progress)_
+- ⌛ D-Link DSL-G2452GE _(In progress)_
 - ⌛ Huawei EG8145V5 _(In progress)_
 - ⌛ Huawei EG8145X6 _(In progress)_
 - ⌛ Huawei HG8145X6 _(In progress)_
 - ⌛ Huawei HG8245H5 _(In progress)_
 - ⌛ Nokia G‑240W‑A _(In progress)_
 - ⌛ Nokia G‑240W‑B _(In progress)_
+- ⌛ TOZED ZLT AZ631 _(In progress)_
 - ⌛ ZTE ZXHN F660 _(In progress)_
 - ⌛ ZTE ZXHN F670L _(In progress)_
 - ⌛ ZTE ZXHN F680 _(In progress)_
