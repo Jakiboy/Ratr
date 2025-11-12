@@ -124,10 +124,10 @@ namespace Ratr
                         case "zte-zxhn-h298n":
                         case "zte-zxhn-h298q":
                         case "zte-zxv10-h201l-2-0":
-                            args = $"/c {decoder} {configFile} {xmlFile} --try-all-known-keys";
+                            args = $"/c \"\"{decoder}\" \"{configFile}\" \"{xmlFile}\" --try-all-known-keys\"";
                             break;
                         case "huawei-dg8245v-10":
-                            args = $"/c {decoder} --silent --file {configFile} --output {xmlFile}";
+                            args = $"/c \"\"{decoder}\" --silent --file \"{configFile}\" --output \"{xmlFile}\"\"";
                             break;
                         default:
                             MessageBox.Show("Unsupported model selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
