@@ -1,4 +1,7 @@
-While trying to extract a config from a newer dn8245v-70, issue and likely updated via your ISP, you may run into the issue that the commands given for huawei routers from the other docs do not work,and no download button appears,the following helper,will use leftover code that downloads the config file.
+This doc aims to show assist you in the extraction of the config file for the Huawei dn8245v-70. 
+
+
+While trying to extract a config from a newer dn8245v-70, likely updated via your ISP, you may run into an issue that where commands given for huawei routers from the other docs do not work,and no download button appears,the following helper,will use leftover code that downloads the config file.
 
 Steps
 
