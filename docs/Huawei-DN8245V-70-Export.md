@@ -6,7 +6,7 @@ While trying to extract a config from a newer dn8245v-70, likely updated via you
 Steps
 
 1. Login normally using your router IP(e.x 192.168.1.1)
-2. Open a separate tab and go to (http://<ROUTER-IP>/html/ssmp/cfgfile/cfgfileroot.asp)
+2. Open a separate tab and go to (http://'ROUTER-IP'/html/ssmp/cfgfile/cfgfileroot.asp)
 3. Press F12, go to the console and paste the following,
 
 ```
